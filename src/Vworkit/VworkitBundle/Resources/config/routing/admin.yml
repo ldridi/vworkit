@@ -1,0 +1,34 @@
+admin:
+    path:     /admin
+    defaults: { _controller: VworkitBundle:Admin:index }
+    
+admin_projet:
+    path:     /admin/admin_projet
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:index" }
+
+admin_projet_show:
+    path:     /admin/admin_projet/{id}/show
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:show" }
+
+admin_projet_new:
+    path:     /admin/admin_projet/new
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:new" }
+
+admin_projet_create:
+    path:     /admin/admin_projet/create
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:create" }
+    requirements: { _method: post }
+
+admin_projet_edit:
+    path:     /admin/admin_projet/{id}/edit
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:edit" }
+
+admin_projet_update:
+    path:     /admin/admin_projet/{id}/update
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:update" }
+    requirements: { _method: post|put }
+
+admin_projet_delete:
+    path:     /admin/admin_projet/{id}/delete
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:delete" }
+    requirements: { _method: post|delete }

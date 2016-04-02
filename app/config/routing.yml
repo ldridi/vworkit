@@ -1,0 +1,68 @@
+page:
+    pattern:  /about
+    defaults: { _controller: VworkitBundle:Acceuil:pages }
+
+timeline:
+    pattern:  /timeline
+    defaults: { _controller: VworkitBundle:Acceuil:timeline }
+
+demo:
+    pattern:  /demo
+    defaults: { _controller: UtilisateurBundle:Demo:new }
+
+demo_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Demo:create" }
+    requirements: { _method: post }
+
+acceuil:
+    pattern:  /
+    defaults: { _controller: VworkitBundle:Acceuil:index }
+
+utilisateur:
+    resource: "@UtilisateurBundle/Resources/config/routing.yml"
+    prefix:   /
+
+vworkit:
+    resource: "@VworkitBundle/Resources/config/routing.yml"
+    prefix:   /
+   
+#profile:
+    #pattern:  /profile/{section}
+    #defaults: { _controller: UtilisateurBundle:Profile:show }
+
+info:
+    pattern:  /info
+    defaults: { _controller: UtilisateurBundle:infoCompte:formulaireType }
+
+examen:
+    pattern:  /examen
+    defaults: { _controller: UtilisateurBundle:examenCompte:formulaireExamenType }
+
+invite:
+    pattern:  /invite
+    defaults: { _controller: UtilisateurBundle:inviteCompte:formulaireInviteType }
+    
+finance:
+    pattern:  /finance
+    defaults: { _controller: UtilisateurBundle:financeCompte:formulaireFinanceType }
+
+#reseau:
+    #pattern:  /reseau
+    #defaults: { _controller: UtilisateurBundle:reseauCompte:formulaireReseauType }
+    
+parametre:
+    pattern:  /parametre
+    defaults: { _controller: UtilisateurBundle:paramCompte:formulaireParamType }
+
+#profil:
+    #pattern:  /profil
+    #defaults: { _controller: UtilisateurBundle:Profile:profil }
+    
+#notification:
+    #pattern:  /notification
+    #defaults: { _controller: UtilisateurBundle:notifCompte:formulaireNotifType }
+
+supprimer:
+    pattern:  /supprimer
+    defaults: { _controller: UtilisateurBundle:Profile:formulaireSupprType }

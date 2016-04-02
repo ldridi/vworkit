@@ -1,0 +1,85 @@
+VworkitBundle_projet:
+    resource: "@VworkitBundle/Resources/config/routing/projet.yml"
+    prefix: /projet
+    
+VworkitBundle_offre:
+    resource: "@VworkitBundle/Resources/config/routing/offre.yml"
+    prefix: /offre
+    
+VworkitBundle_tache:
+    resource: "@VworkitBundle/Resources/config/routing/tache.yml"
+    prefix: /
+
+VworkitBundle_commentairetache:
+    resource: "@VworkitBundle/Resources/config/routing/commentairetache.yml"
+    prefix: /
+    
+VworkitBundle_categorie:
+    resource: "@VworkitBundle/Resources/config/routing/categories.yml"
+    prefix: /
+
+VworkitBundle_budget:
+    resource: "@VworkitBundle/Resources/config/routing/budget.yml"
+    prefix: /
+    
+    #projet_admin
+administration_homepage:
+    path:     /admin
+    defaults: { _controller: VworkitBundle:Admin:index }
+    
+admin_projet:
+    path:     /admin/admin_projet
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:index" }
+
+admin_projet_show:
+    path:     /admin/admin_projet/{id}/show
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:show" }
+
+admin_projet_new:
+    path:     /admin/admin_projet/new
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:new" }
+
+admin_projet_create:
+    path:     /admin/admin_projet/create
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:create" }
+    requirements: { _method: post }
+
+admin_projet_edit:
+    path:     /admin/admin_projet/{id}/edit
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:edit" }
+
+admin_projet_update:
+    path:     /admin/admin_projet/{id}/update
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:update" }
+    requirements: { _method: post|put }
+
+admin_projet_delete:
+    path:     /admin/admin_projet/{id}/delete
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:delete" }
+    requirements: { _method: post|delete }
+
+
+    
+chart:
+    pattern:  /admin/stat
+    defaults: { _controller: VworkitBundle:Stat:stat }
+
+statistique:
+    pattern:  /admin/statistique
+    defaults: { _controller: VworkitBundle:Stat:index }
+    
+chartdate:
+    pattern:  /admin/statdate
+    defaults: { _controller: VworkitBundle:StatDate:statdate }
+
+chartprojet:
+    pattern:  /admin/statprojet
+    defaults: { _controller: VworkitBundle:StatProjet:statprojet }
+
+chartcategorie:
+    pattern:  /admin/statcategorie
+    defaults: { _controller: VworkitBundle:StatCategorie:statcategorie }
+
+commentaire_tache_new:
+    path:     /profil/tache/commentaire/new
+    defaults: { _controller: "VworkitBundle:CommentaireTache:new" }

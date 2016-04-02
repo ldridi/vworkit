@@ -1,0 +1,139 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+        <!--<div class="col-md-12">
+            <p>
+                Pour créer un projet et recevoir des offres, ou publier vos offres sur des projets, vous devez créer un compte. Ce compte vous permettra de gérer vos activités sur Codeur et de modifier si nécessaires vos projets ou vos offres.
+            </p>
+        </div>-->
+        
+        <!--<div class="login">
+        <div class="col-md-6 col-md-offset-3">
+            <form id="x" action="{{ path("fos_user_security_check") }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                
+                <div class="modal-content">
+                    <div class="modal-header" style="margin-bottom:30px;">
+                        <p>
+                            Pour créer un projet et recevoir des offres, ou publier vos offres sur des projets, vous devez créer un compte. Ce compte vous permettra de gérer vos activités sur Codeur et de modifier si nécessaires vos projets ou vos offres.
+                        </p>
+                        <h4 class="modal-title text-center" style="color:black">Connectez-vous avec un compte ci-dessous :</h4>
+                        {% if error %}
+                            <div class="alert alert-danger alert-sm">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <strong>
+                                    <div><b style="color:white;">{{ error.messageKey|trans(error.messageData, 'security') }}</b></div>
+                                </strong>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="margin-bottom:10px;">
+                            <div class="col-xs-12" style="margin-bottom:5px;">
+                                <button class="btn btn-facebook btn-sm pull-left"><i class="fa fa-facebook"></i> | Se connecter avec facebook</button>&nbsp;&nbsp;
+                                <button class="btn btn-google-plus btn-sm pull-right"><i class="fa fa-google-plus"></i> | Se connecter avec Google+</button>&nbsp;&nbsp;
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class="glyphicon glyphicon-user" style="color:black"></i>&nbsp; <label style="color:black;"for="username">{{ 'security.login.username'|trans }}</label>
+                                <input type="text" class="form-control input-sm" placeholder="Pseudo"id="username" name="_username" value="{{ last_username }}" required="required" /><br>
+                            </div>
+                            <div class="col-xs-6">
+                                <i class="glyphicon glyphicon-lock" style="color:black"></i>&nbsp;<label style="color:black;"for="password">{{ 'security.login.password'|trans }}</label>
+                                <input type="password" class="form-control input-sm" id="password"placeholder="Mot de passe" name="_password" required="required" /><br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12" style="margin-top:20px;">
+                                <label class="toggle">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> <span class="handle"></span>
+                                </label>&nbsp;<font color="black">Se souvenir de moi</font>
+                            </div>
+                            <div class="col-xs-12">
+
+                                <p> 
+                                    <a href="{{ path('fos_user_resetting_request') }}" style="color:#89D0DC">Mot de passe oublié  ?</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary btn-sm pull-left" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="well well-sm">
+
+                <strong>Twitter, Inc.</strong><br>
+                <p>
+                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                </p>
+                <strong>Twitter, Inc.</strong><br>
+                <p>
+                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                </p>
+                <strong>Twitter, Inc.</strong><br>
+                <p>
+                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                </p>
+                <strong>Twitter, Inc.</strong><br>
+                <p>
+                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                </p>
+                <strong>Twitter, Inc.</strong><br>
+                <p>
+                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                </p>
+
+
+            </div>
+        </div>    
+    </div>-->
+     <div class="login center-block">
+        
+
+            <div class="col-md-4 col-md-offset-4">
+        <div class="cards card-container text-center">
+            {% if error %}
+                            <div class="alert alert-danger alert-sm">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <strong>
+                                    <div><b style="color:white;">{{ error.messageKey|trans(error.messageData, 'security') }}</b></div>
+                                </strong>
+                            </div>
+                        {% endif %}
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" src="{{ asset('img/logo10.png') }}" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <span id="reauth-email" class="reauth-email"></span>
+                <input type="text" class="form-control input-sm" placeholder="Pseudo" id="inputEmail" name="_username" value="{{ last_username }}" required autofocus />
+                <input type="password" class="form-control input-sm" id="inputPassword" placeholder="Mot de passe" name="_password" required />
+                
+                
+                <input type="submit" class="btn btn-sm btn-primary btn-block btn-signin" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                
+            </form><!-- /form --><br>
+            <a href="{{ path('fos_user_resetting_request') }}" class="forgot-password ">
+                Mot de passe oublié ?
+            </a><br>
+            Pas encore membre
+             <a href="{{ path('fos_user_registration_register') }}" class="forgot-password">
+                 ? S'inscrire
+            </a>
+        </div>
+        </div>
+        
+    </div>
+
+{% endblock fos_user_content %}

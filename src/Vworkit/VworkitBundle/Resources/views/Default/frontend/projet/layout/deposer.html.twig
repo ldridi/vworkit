@@ -1,0 +1,87 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+
+    <div class="projet">
+        {% if is_granted("ROLE_USER") %}
+            {% include '::layout/header_user.html.twig' %}
+
+
+        {% endif %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;padding-bottom: 10px;">
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h5 class="autre"><i class="glyphicon glyphicon-list" style="color: black;font-size:20px;"></i>&nbsp;Ajouter nouveau projet</h5>
+                                    
+                                </div>
+                                <div class="col-xs-12" style="display:none" id="msgProjet"> 
+                                    <div class="alert alert-success alert-dismissible" role="alert" style="color:white;">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      Votre Projet à éte ajouté avec succee.
+                                    </div>
+                                </div>
+                                <form method="POST" class="ajaxFormProjet" action="{{path('projet_create')}}" {{ form_enctype(form) }}>
+                                    <div id="form_body">
+                                        {% include 'VworkitBundle:Default:frontend/projet/layout/form.html.twig' with {'form': form} %}
+                                    </div>
+                                    <div class="col-md-6" style="margin-bottom:20px;">
+
+                                        <button type="submit" class="btn btn-primary btn-sm">Déposer le projet</button>
+                                        <img src="{{ asset('img/loading.gif') }}" class="loadProjet" style="width:30px;display:none;">
+                                        {{form_rest(form)}}
+                                        <br>
+                                    </div>
+
+                                </form>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="well well-sm" style="padding:20px;">
+                        <strong>Commencez à construire votre projet</strong><br>
+                        <p style="line-height:25px;">
+                            Grâce à Vworkit peut construire votre entreprise que vous le souhaitez, entrez les détails du projet et le budget prévu, le projet est examiné et publié gratuitement sur indépendamment. Après cela, la meilleure indépendant enregistré ferait différentes offres pour choisir la bonne offre et vous commencez à mettre en œuvre votre projet.
+                        </p>
+                        <strong>Le site Vworkit garantit vos droits</strong><br>
+                        <p style="line-height:25px;">
+                            Lorsque vous faites affaire avec un indépendant à travers le site Vworkit, le site reste un médiateur entre vous et l'indépendant qui met en œuvre le projet et seulement lorsque le projet se termine avec la mise en œuvre complète de la quantité de conversion est indépendant du compte qui a réalisé le projet.
+                        </p>
+                        <strong>Conseils pour un travail fructueux</strong><br>
+                        <p style="line-height:25px;">
+                            <ul>
+                                <li style="list-style-type:square;">Entrez les détails du projet précision.</li>
+                                <li style="list-style-type:square;">Remplissez tous les champs et des exemples de ce que vous voulez à condition.</li>
+                                <li style="list-style-type:square;">Le projet fait partie de plusieurs petits stades.</li>
+                            </ul>
+                        </p>
+                        <strong>Avez-vous besoin d'aide ?</strong><br>
+                        <p style="line-height:25px;">
+                           Notre équipe est sur toute la journée pour vous aider à construire le projet que vous voulez. Ne pas hésiter à communiquer avec nous si vous avez des questions ou si vous avez besoin d'aide!
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+        initAjaxFormProjet();
+
+    </script>
+
+{% endblock %}

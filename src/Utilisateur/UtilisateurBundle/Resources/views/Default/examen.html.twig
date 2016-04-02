@@ -1,0 +1,122 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_profil.html.twig' %}
+                <div class="col-md-9">
+                    <div class="well well-sm" style="background: white;">
+                        <strong>Twitter, Inc.</strong><br>
+                        <p>
+                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <h4 style="margin-top:-3px;">Bienvenue au labo de compétences</h4>
+                                    <p>
+                                        Clients review your skills when awarding projects. Take these basic skills tests to define your credentials and get awarded more jobs. When you complete a test your profile and bids will showcase a Skills Lab Badge.
+                                        Clients review your skills when awarding projects. Take these basic skills tests to define your credentials and get awarded more jobs. When you complete a test your profile and bids will showcase a Skills Lab Badge.
+                                    </p>
+                                    <button class="btn btn-sm btn-primary">Commencer les tests de votre choix !</button>
+                                </div>
+                                <div class="col-md-5">
+                                    <img src="{{ asset('img/cerveau.jpg') }}" class="img-rounded  img-responsive">
+                                </div>
+                            </div>
+                            <form action="" method="POST" {{ form_enctype(form) }}>
+                            {{ form_start(form) }}    
+                            <div class="row" style="margin-top:50px;">
+                                <div class="col-md-8" style="margin-bottom:5px;">
+                                    {{ form_widget(form.categorie) }}
+                                </div>
+                                <div class="col-md-4" style="margin-bottom:5px;">
+                                    <div class="form-search search-only">
+                                        <i class="search-icon glyphicon glyphicon-search" ></i> 
+                                        {{ form_widget(form.cle) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+                            </form>
+                            <div class="row" style="margin-top:30px;">
+                                <div class="col-md-4">
+                                    <div class="well">
+                                        <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                            <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                            <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                        </ul>
+                                        <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="well">
+                                        <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                            <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                            <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                        </ul>
+                                        <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="well">
+                                        <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                            <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                            <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                        </ul>
+                                        <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="well">
+                                        <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                            <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                            <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                        </ul>
+                                        <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="well">
+                                        <img src="{{ asset('icones/js.png') }}" class="img-rounded center-block thumbnail">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                            <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                            <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                        </ul>
+                                        <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="well">
+                                        <img src="{{ asset('icones/css.png') }}" class="img-rounded center-block thumbnail">
+                                        <ul class="list-group">
+                                            <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                            <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                            <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                        </ul>
+                                        <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

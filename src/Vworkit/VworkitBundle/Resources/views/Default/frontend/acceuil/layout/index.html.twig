@@ -1,0 +1,306 @@
+
+{% extends'::layout/layout.html.twig' %}
+{% block body %}
+    <!--<div class="chargement" style="display:none;">
+        
+    </div>--> 
+    <div class="acceuil">
+        
+          <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="pub">
+                        <p>
+                            <a href="{{ path('projet_new') }}"><button class="btn btn-primary btn-md " style="width:300px;border:1px solid black;"><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Déposer un projet</button> <span class="sr-only">(current)</span></a>
+                            
+                            <!--<a href=""><button class="btn btn-warning btn-md"><i class="glyphicon glyphicon-facetime-video"></i>&nbsp;Devenir instructeur</button></a>-->
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="pub1">
+                        <h4 style="color:black;">De quoi avez-vous besoin ? Trouvez le sur Vworkit</h4>
+                        {% render(controller('VworkitBundle:Projet:recherche')) %}
+                        <h6 style="color:black;line-height:25px;">
+                                Recherchez des cours en ligne sur le développement Web, le yoga, la guitare, ou quoi que ce soit d'autre.
+                        </h6>
+                      </div>
+                </div>
+              </div>
+          </div>
+    </div>
+    
+    <div class="separateur">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>LES CATEGORIES</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="categorie">
+        <div class="container">
+              {% render(controller('VworkitBundle:Categories:catIndex')) %}
+              <button class="btn btn-sm btn-default center-block" style="margin-top:30px;border:1px solid blue;">Voir Toutes les catégories</button>
+        </div>
+
+    </div>
+    
+    
+    <!--<div class="separateur">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>NOTRE CALENDRIER</h3>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="espace_timeline">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                  <div class="timeline">
+                     <dl>
+                        <dt  style="background: #F39C11;">Avril 2014</dt>
+                        <dd class="pos-right clearfix">
+                           <div class="circ"></div>
+                           <div class="time">Avril 14</div>
+                           <div class="events" style="padding:10px;">
+                              <div class="pull-left"><img class="events-object img-rounded img-responsive" style="border:2px solid #F39C11;" src="{{ asset('img/lotfi.jpg') }}"></div>
+                              <div class="events-body">
+                                 <h4 class="events-heading">Développeur Web</h4>
+                                 <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                              </div>
+                           </div>
+                        </dd>
+                        <dd class="pos-left clearfix">
+                           <div class="circ"></div>
+                           <div class="time" >Avril 10</div>
+                           <div class="events" style="padding:10px;">
+                              <div class="pull-left"><img class="events-object img-rounded" style="border:2px solid #F39C11;" src="{{ asset('img/hayfa.jpg') }}"></div>
+                              <div class="events-body">
+                                 <h4 class="events-heading">Infographiste</h4>
+                                 <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                              </div>
+                           </div>
+                        </dd>
+                        <dt   style="background: #F39C11;">Avril 2014</dt>
+                        <dd class="pos-right clearfix">
+                           <div class="circ"></div>
+                           <div class="time">Avril 15</div>
+                           <div class="events" style="padding:10px;">
+                              <div class="pull-left"><img class="events-object img-rounded" style="border:2px solid #F39C11;" src="{{ asset('img/anas.jpg') }}"></div>
+                              <div class="events-body">
+                                 <h4 class="events-heading">Programmeur Jeux Video</h4>
+                                 <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                              </div>
+                           </div>
+                        </dd>
+                        <dd class="pos-left clearfix">
+                           <div class="circ"></div>
+                           <div class="time">Avril 8</div>
+                           <div class="events" style="padding:10px;">
+                              <div class="pull-left"><img class="events-object img-rounded" style="border:2px solid #F39C11;" src="{{ asset('img/ghof.jpg') }}"></div>
+                              <div class="events-body">
+                                 <h4 class="events-heading">Modélisateur Jeux 3D</h4>
+                                 <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                              </div>
+                           </div>
+                        </dd>
+                     </dl>
+                  </div>
+               </div> 
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="separateur">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>PAIEMENT</h3>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="paiement">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-12" style="margin-bottom:30px;">
+                <h3 class="text-center">Choisissez votre formule</h3>
+                <p class="text-center" style="font-size:15px;">
+                  <b>La formule gratuite vous permet de vous référencer sur la plateforme. 
+                  Les formules payantes vous permettent de participer aux appels d'offres et de remporter de nouvelles commandes.</b>
+                </p>
+            </div>
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="pricing">
+                     <ul>
+                        <li class="unit price-primary">
+                           <div class="price-title">
+                              <h3>0 DNT</h3>
+                              <p>Par mois</p>
+                           </div>
+                           <div class="price-body">
+                              <h4>Gratuit</h4>
+                             <p>Beaucoup de clients et d'utilisateurs</p>
+                              <ul>
+                                 <li>Création de profil</li>
+                                 <li>Création de portfolio</li>
+                                 <li>Alertes Email</li>
+                                 <li>Consultation des projets</li>
+                                 <li>Remporter 5 Projets</li>
+                              </ul>
+                           </div>
+                           <div class="price-foot"><button type="button" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;S'abonner</button></div>
+                        </li>
+                        <li class="unit price-success active">
+                           <div class="price-title">
+                              <h3>10 DNT</h3>
+                              <p>Par mois</p>
+                           </div>
+                           <div class="price-body">
+                              <h4>Pro</h4>
+                              
+                              <ul>
+                                 <li>Création de profil</li>
+                                 <li>Création de portfolio</li>
+                                 <li>Alertes Email</li>
+                                 <li>Consultation des projets</li>
+                                 <li>Remporter 80 Projets</li>
+                                 <li>Alertes projets immédiates</li>
+                                 <li>informations Confidentielles</li>
+                              </ul>
+                           </div>
+                           <div class="price-foot"><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;S'abonner</button></div>
+                        </li>
+                        <li class="unit price-warning">
+                           <div class="price-title">
+                              <h3>20 DNT</h3>
+                              <p>Par mois</p>
+                           </div>
+                           <div class="price-body">
+                              <h4>Pro Max</h4>
+                              
+                              <ul>
+                                 <li>Création de profil</li>
+                                 <li>Création de portfolio</li>
+                                 <li>Alertes Email</li>
+                                 <li>Consultation des projets</li>
+                                 <li>Remporter 160 Projets</li>
+                                 <li>Alertes projets immédiates</li>
+                                 <li>informations Confidentielles</li>
+                                 <li>Coordonnées du client visibles </li>
+                                 <li>Vos coordonnées visibles</li>
+                                 <li>Alertes email premium</li>
+                              </ul>
+                           </div>
+                           <div class="price-foot"><button type="button" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;S'abonner</button></div>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="col-md-12 text-center" style="margin-top:20px;">
+                  <p>
+                      <b>Note : vous pourrez changer de formule une fois l'inscription terminée.</b>
+                  </p>
+                  <p>
+                      <b>Une question ? Contactez-nous par email sur contact@vworkit.com.</b>
+                  </p>
+               </div> 
+            </div>
+        </div>
+    </div>
+    <div class="separateur">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>RESTEZ EN CONTACT</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="devices">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                  <font style="text-align:justify;line-height:30px;color:white;font-size:15px;">Le Lorem Ipsum est simplement du faux texte employé dans la Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker</font></br></br>
+                 <button class="btn btn-sm btn-default">Télecharger l'application Vworkit</button>
+                </div>
+                <div class="col-md-3">
+                <img src="{{ asset('img/android3.png') }}" width="350">
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+    <div class="separateur">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>ILS NOUS FONT CONFIANCE</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="confiance">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="{{ asset('img/elan.png') }}">
+                </div>
+                <div class="col-md-2">
+                    <img src="{{ asset('img/elan11.png') }}">
+                </div>
+                <div class="col-md-2">
+                    <img src="{{ asset('img/elan2.png') }}">
+                </div>
+                <div class="col-md-2">
+                    <img src="{{ asset('img/elan3.png') }}">
+                </div>
+                <div class="col-md-2">
+                    <img src="{{ asset('img/elan4.png') }}">
+                </div>
+                <div class="col-md-2">
+                    <img src="{{ asset('img/elan5.png') }}">
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6" style="margin-bottom:10px;">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Contactez-nous</h4>
+                      </div>
+                      <div class="modal-body">
+                        <p>
+                          Veuillez utiliser ce formulaire pour nous contacter. N'oubliez pas de <a href="">consulter l'aide</a> avant toute demande.
+                          Dans le cas particulier où vous rencontreriez un problème durant un projet,
+                           il faut déclarez un litige dans la page du projet concerné, nous en serons averti immédiatement. 
+                           Il est inutile de nous contacter par ce formulaire si vous rencontrez un litige.
+                        </p>
+                        <div class="row">
+                            <div class="col-xs-6"><label>Name</label><input class="form-control" placeholder="Name"></div>
+                            <div class="col-xs-6"><label>Email</label><input class="form-control" placeholder="Email"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12"><label>Message</label><textarea class="form-control" rows="3" placeholder="Votre Message"></textarea></div>
+                        </div>
+                      </div>
+                      <div class="modal-footer"> <button type="button" class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;Envoyer</button></div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well well-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m25!1m12!1m3!1d25552.664171012875!2d10.161559536128792!3d36.81653044374788!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m10!1i0!3e6!4m3!3m2!1d36.8129573!2d10.172975!4m3!3m2!1d36.8206531!2d10.1350379!5e0!3m2!1sar!2stn!4v1423536065215" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>-->
+   
+{% endblock %}

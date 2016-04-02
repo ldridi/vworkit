@@ -1,0 +1,71 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_profil.html.twig' %}
+                <div class="col-md-9">
+                    <div class="well well-sm" style="background: #FCF8E3;">
+                        <strong>Twitter, Inc.</strong><br>
+                        <p>
+                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                    <h4 style="margin-top:-3px;">Voyez qui vous connaissez déjà sur Vworkit.com</h4>
+                    <div class="row">
+                        {% for i in 1..6 %}
+                            <div class="col-md-2">
+                                <img src="{{ asset('img/lotfi.jpg') }}" class="thumbnail img-responsive">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="font-size:15px;">
+                                <b>Commencez par rechercher vos contacts e-mails</b>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-facebook">
+                                    <i class="fa fa-facebook"></i> Inviter avec facebook
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-google-plus">
+                                    <i class="fa fa-google-plus"></i> Inviter avec Google+
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-linkedin">
+                                    <i class="fa fa-linkedin"></i> Inviter avec linkedin
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-twitter">
+                                    <i class="fa fa-twitter"></i> Inviter avec twitter
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-instagram">
+                                    <i class="fa fa-instagram"></i> Inviter avec instagram
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="font-size:15px;">
+                                <b>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+           <div class="espace_av">
+            <div class="row">
+                <div class="col-md-3">
+                    {% render(controller('VworkitBundle:Projet:recherche')) %}
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par Reunion</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% render(controller('VworkitBundle:Reunion:reunion')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par Progression</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                
+                                {% render(controller('VworkitBundle:Progression:progression')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+            <div class="row">
+                <div id="commenttache" style="display:none;">
+                    <div class="container">
+                        <div class="row">
+                            {% render(controller('VworkitBundle:CommentaireTache:new')) %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding:10px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-import" style="font-size: 20px;color: black;margin-bottom: 20px;"></i>&nbsp;Tache Du projet</b>
+                                    <!-- Modal -->
+                                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content" style="padding:20px 30px 20px 30px;">
+                                            {% render(controller('VworkitBundle:Tache:new')) %}
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <li class="pull-left" style="margin-top:3px;list-style-type: none">
+                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Ajouter nouvelle tache</button>
+                                        Label :
+                                            <i class="glyphicon glyphicon-stop" style="color:red;"></i>&nbsp;Important&nbsp;
+                                            <i class="glyphicon glyphicon-stop" style="color:green;"></i>&nbsp;Pas Important&nbsp;
+                                    </li>
+                                </div>
+                                
+                            </div>
+                            <div class="row" style="margin-top:40px;">
+                                {% if taches|length !=0 %}
+                                {% for tache in taches %}
+                                <div class="col-md-3" style="margin-bottom: 20px;">
+                                    <article style="line-height: 25px;border-top:3px solid {{tache.label}};">
+                                        
+                                        <b class="pull-right">
+                                           <a class="param3"><i class="glyphicon glyphicon-comment"></i></a>
+                                            <a href="{{ path('tache_edit', { 'id': tache.id }) }}"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a href="{{path('tachetache_delete',{'id' : tache.id} ) }}"><i class="glyphicon glyphicon-remove-circle"></i></a>
+                                        </b><br>
+                                        <b><i class="glyphicon glyphicon-tag"></i>&nbsp;Associé à : {{ tache.reunion.nomReunion }}</br>
+                                        <b><i class="glyphicon glyphicon-time"></i>&nbsp;Debut : {{ tache.dateAjoutTache|date('Y-m-d H:i:s') }}</b></br>
+                                        <b><i class="glyphicon glyphicon-time"></i>&nbsp;Fin : {{ tache.finajoutTache|date('Y-m-d H:i:s') }}</b></br>
+                                        <b><i class="glyphicon glyphicon-retweet"></i>&nbsp;Progression : </b>
+                                        <div class="progress">
+                                            {% if tache.progression =='Terminé' %}
+                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                                Tache Terminée et verifié
+                                            </div>
+                                            {% elseif tache.progression =='Annuler' %}
+                                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                              Tache Annulée
+                                            </div>
+                                            {% elseif tache.progression =='En attente' %}
+                                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                                              Tache En attente
+                                            </div>
+                                            {% else %}
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ tache.progression}};">
+                                              {{ tache.progression}}
+                                            </div>
+                                            {% endif %}
+                                          </div>
+                                        <p>
+                                        {{ tache.descriptionTache [:70]}}...
+                                        </p>
+                                    </article>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="col-md-12">
+                                    <div class="alert alert-success" role="alert" style="color:white;">
+                                        Pas de taches
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

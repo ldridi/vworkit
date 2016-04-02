@@ -1,0 +1,15 @@
+{% extends('::layout/layout_admin.html.twig') %}
+
+{% block body -%}
+    <h1>Projet creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_projet') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

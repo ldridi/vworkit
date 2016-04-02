@@ -1,0 +1,79 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_profil.html.twig' %}
+                <div class="col-md-6">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <b style="font-size: 20px;color: black"><i class="glyphicon glyphicon-user" style="font-size: 20px;"></i>&nbsp;Fermeture du compte</b>
+                            <form action="" method="POST" {{ form_enctype(form) }}>
+                                {{ form_start(form) }}
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-xs-12"> 
+                                        <i class="glyphicon glyphicon-user"></i>&nbsp;<label class="autre">Raison de votre fermeture  <font color="red">*</font></label><br><br>
+                                        <label class="toggle"><input type="checkbox" name="choix_paiement" > <span class="handle"></span></label>
+                                        &nbsp;&nbsp;<b style="color:black;">J'ai des problèmes de confidentialité.</b>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12"> 
+                                        <label class="toggle"><input type="checkbox" name="choix_paiement" > <span class="handle"></span></label>
+                                        &nbsp;<b style="color:black;">&nbsp;Je ne le trouve pas utile.</b>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12"> 
+                                        <label class="toggle"><input type="checkbox" name="choix_paiement" > <span class="handle"></span></label>
+                                        &nbsp;&nbsp;<b style="color:black;">Je reçois trop de notifications.</b>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12"> 
+                                        <label class="toggle"><input type="checkbox" name="choix_paiement" > <span class="handle"></span></label>
+                                        &nbsp;&nbsp;<b style="color:black;">Je ne comprends pas comment utiliser le site.</b>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12"> 
+                                        <label class="toggle"><input type="checkbox" name="choix_paiement" > <span class="handle"></span></label>
+                                        &nbsp;&nbsp;<b style="color:black;">C'est temporaire, je reviendrai.</b>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12"> 
+                                        <label class="toggle"><input type="checkbox" name="choix_paiement" > <span class="handle"></span></label>
+                                        &nbsp;&nbsp;<b style="color:black;">Autre.</b>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12">    
+                                        <i class="glyphicon glyphicon-user"></i>&nbsp;<label class="autre">Votre commentaire nous est utile :  <font color="red">*</font></label>
+                                        <b style="color:red;">{{ form_errors(form.raison) }}</b>
+                                        {{ form_widget(form.raison) }}
+                                        <br>
+                                    </div>
+                                    
+                                    <div class="col-xs-12">    
+                                        <ul class="list-group">
+                                            <li class="list-group-item" style="background: white;color:red;"><b>Votre profil et vos listings disparaîtront</b></li>
+                                            <li class="list-group-item" style="background: white;color:red;"><b>Vous ne recevrez plus de notifications de notre part</b></li>
+                                            <li class="list-group-item" style="background: white;color:red;"><b>Vous ne pourrez plus vous reconnecter sur le site</b></li>
+                                            <li class="list-group-item" style="background: white;color:red;"><b>Plus important - vous nous manquerez !</b></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-12" style="margin-bottom: 20px;">
+                                        <a href="{{ path('projet') }}">{{ form_widget(form.sauvegarde) }}</a>
+                                        {{ form_widget(form.fermer) }}
+                                    </div>
+                                </div>
+                                {{ form_end(form) }}
+                                
+                            </form>
+                            
+                        </div> 
+                                
+                    </div>
+
+                </div>
+                {% include '::layout/laune.html.twig' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+recommandation:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Recommandation:index" }
+
+recommandation_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Recommandation:show" }
+
+recommandation_new:
+    path:     /{id}/new
+    defaults: { _controller: "UtilisateurBundle:Recommandation:new" }
+
+recommandation_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Recommandation:create" }
+    requirements: { _method: post }
+
+recommandation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Recommandation:edit" }
+
+recommandation_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Recommandation:update" }
+    requirements: { _method: post|put }
+
+recommandation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Recommandation:delete" }
+    requirements: { _method: post|delete }

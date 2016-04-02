@@ -1,0 +1,30 @@
+certificat:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Certificat:index" }
+
+certificat_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Certificat:show" }
+
+certificat_new:
+    path:     /new
+    defaults: { _controller: "UtilisateurBundle:Certificat:new" }
+
+certificat_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Certificat:create" }
+    requirements: { _method: post }
+
+certificat_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Certificat:edit" }
+
+certificat_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Certificat:update" }
+    requirements: { _method: post|put }
+
+certificat_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Certificat:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Certificat</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomcertificat</th>
+                <td>{{ entity.nomCertificat }}</td>
+            </tr>
+            <tr>
+                <th>Sitecertificat</th>
+                <td>{{ entity.siteCertificat }}</td>
+            </tr>
+            <tr>
+                <th>Datecertificat</th>
+                <td>{{ entity.dateCertificat }}</td>
+            </tr>
+            <tr>
+                <th>Descriptioncertificat</th>
+                <td>{{ entity.descriptionCertificat }}</td>
+            </tr>
+            <tr>
+                <th>Linkcertificat</th>
+                <td>{{ entity.linkCertificat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('certificat') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('certificat_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

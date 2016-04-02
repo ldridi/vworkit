@@ -1,0 +1,38 @@
+offre:
+    path:     /
+    defaults: { _controller: "VworkitBundle:Offre:index" }
+
+offre_affiche:
+    path:     /lister
+    defaults: { _controller: "VworkitBundle:Offre:lister" }
+    
+offre_show:
+    path:     /{id}/show
+    defaults: { _controller: "VworkitBundle:Offre:show" }
+
+offre_new:
+    path:     /new
+    defaults: { _controller: "VworkitBundle:Offre:new" }
+
+offre_create:
+    path:     /create
+    defaults: { _controller: "VworkitBundle:Offre:create" }
+    requirements: { _method: post }
+
+offre_edit:
+    path:     /{id}/modifier
+    defaults: { _controller: "VworkitBundle:Offre:modifier" }
+
+offre_update:
+    path:     /{id}/update
+    defaults: { _controller: "VworkitBundle:Offre:update" }
+    requirements: { _method: post|put }
+
+offre_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VworkitBundle:Offre:delete" }
+    requirements: { _method: post|delete }
+
+reunion_ajout:
+    path:     /{id}/{offre}/{nom}
+    defaults: { _controller: "VworkitBundle:Reunion:Accept" }

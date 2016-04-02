@@ -1,0 +1,7 @@
+parameters:
+#    vworkit.example.class: Vworkit\VworkitBundle\Example
+
+services:
+#    vworkit.example:
+#        class: %vworkit.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

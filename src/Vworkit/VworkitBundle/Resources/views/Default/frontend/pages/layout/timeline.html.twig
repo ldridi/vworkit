@@ -1,0 +1,10 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+
+<div class="projet" style="background:url('../img/1641465.jpg');background-size:cover;">
+    {% if is_granted("ROLE_USER") %}
+        {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    en cours
+</div>
+{% endblock %}

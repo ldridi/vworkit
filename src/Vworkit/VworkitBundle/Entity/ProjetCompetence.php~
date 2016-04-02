@@ -1,0 +1,73 @@
+<?php
+
+namespace Vworkit\VworkitBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProjetCompetence
+ *
+ * @ORM\Table("projetpompetence")
+ * @ORM\Entity(repositoryClass="Vworkit\VworkitBundle\Repository\ProjetCompetenceRepository")
+ */
+class ProjetCompetence
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_ajout_projetcompetence", type="date")
+     */
+    private $dateAjoutProjetcompetence;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Vworkit\VworkitBundle\Entity\Projet")
+     */
+    private $projet;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Vworkit\VworkitBundle\Entity\Competence")
+     */
+    private $competence;
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateAjoutProjetcompetence
+     *
+     * @param \DateTime $dateAjoutProjetcompetence
+     * @return ProjetCompetence
+     */
+    public function setDateAjoutProjetcompetence($dateAjoutProjetcompetence)
+    {
+        $this->dateAjoutProjetcompetence = $dateAjoutProjetcompetence;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateAjoutProjetcompetence
+     *
+     * @return \DateTime 
+     */
+    public function getDateAjoutProjetcompetence()
+    {
+        return $this->dateAjoutProjetcompetence;
+    }
+}

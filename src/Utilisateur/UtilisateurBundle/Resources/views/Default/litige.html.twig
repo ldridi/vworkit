@@ -1,0 +1,64 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_profil.html.twig' %}
+                <div class="col-md-9">
+
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-user" style="font-size: 20px;color: black"></i>&nbsp;Déclarer un Probleme</b>
+                            <div class="well well-sm" style="background:#FCFCFD;margin-top:10px;">
+                                <p>
+                                    Vos coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule  adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                </p>
+                            </div>
+                            
+                            {{ form_start(form) }}
+                            <div class="row" style="margin-top: 20px;">
+                                {% set flashbag_notices = app.session.flashbag.get('litige') %}
+                                    {% if flashbag_notices is not empty %}
+                                        
+                                            {% for notice in flashbag_notices %}
+                                            <div class="col-xs-12">  
+                                                <div class="alert alert-success alert-dismissible" role="alert" >
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <b style="color:black;">{{notice}}</b>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                       
+                                    {% endif %}
+                                <div class="col-xs-6">    
+                                        <label class="autre"> Raison du demande  </label>
+
+                                        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+                                            {{ form_widget(form.raison) }}
+                                        </a>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-6">    
+                                        <label class="autre"> Description de votre demande  </label>
+                                        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+                                            {{ form_widget(form.descriptionLitige) }}
+                                        </a>
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12" style="margin-bottom: 20px;">
+                                        {{ form_widget(form.submit) }}
+                                    </div>
+                                </div>
+
+                                {{ form_end(form) }}
+                            
+                            </div>    
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}

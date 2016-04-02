@@ -1,0 +1,66 @@
+{% extends('::layout/layout_admin.html.twig') %}
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                {% include '::layout/navigation_profil_admin.html.twig' %}
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+
+                            <h1>{{entity.titreProjet|upper }} 
+                                <a href="{{ path('admin_projet_new') }}">
+                                    Ajouter nouveau projet&nbsp;|&nbsp;
+                                </a>
+                                <a href="{{ path('admin_projet_edit', { 'id': entity.id }) }}">
+                                    Modifier&nbsp;|&nbsp;
+                                </a>
+                                <a href="{{ path('admin_projet') }}">
+                                    Retour a la liste
+                                </a>
+                                {{ form(delete_form) }}
+                            </h1>
+                            <div class="row">
+                                <div class="span6">
+                                    <div class="well well-sm" style="background: white;">
+                                        <dl>
+                                            <dt>Projet Numero </dt>
+                                            <dd>{{ entity.id }}</dd>
+                                            <dt>Titreprojet</dt>
+                                            <dd>{{ entity.titreProjet }}</dd>
+                                            <dt>Objectifprojet</dt>
+                                            <dd>{{ entity.objectifProjet }}</dd>
+                                            <dt>Descriptionprojet</dt>
+                                            <dd>{{ entity.descriptionProjet }}</dd>
+                                            <dt>Dateajoutprojet</dt>
+                                            <dd>{{ entity.dateAjoutProjet|date('Y-m-d H:i:s') }}</dd>
+                                            <dt>Ajouté par</dt>
+                                            <dd>{{ entity.user.nomUser }}</dd>
+                                            
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="span3">
+                                    <div class="well well-sm" style="background: white;">
+                                        <dl>
+                                            <dt>Catgeorie du projet </dt>
+                                            <dd>{{ entity.categorie }}</dd>
+                                            <dt>Budget du projet </dt>
+                                            <dd>{{ entity.budget }} {{ entity.devise }}</dd>
+                                            <dt>Competences associe </dt>
+                                            {% for competences in entity.competence %}
+                                                <dd><span class="label label-danger" style="background: #50C1E9;">{{ competences.nomCompetence }}</span>&nbsp;</dd>
+                                            {% endfor %}
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

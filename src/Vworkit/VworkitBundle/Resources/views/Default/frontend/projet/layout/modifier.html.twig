@@ -1,0 +1,132 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        {% include '::layout/navigation_profil.html.twig' %}
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade  active in" id="home3">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <b style="font-size: 20px;">PROFILE-A PROPOS</b>
+                                    </div>
+                                    <div class="col-md-10" style="margin-top:20px;">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;padding-bottom:10px;">
+                                <button type="button" class="btn btn-danger btn-sm pull-right" data-toggle="modal" data-target="#myModal">
+                                  Supprimer le projet
+                                </button>
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">Supprimer le projet</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        Vous etes sur le point du suppression du projet, voulez vous vraiment ?
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default btn-sm pull-right" style="margin-left:10px;"data-dismiss="modal">Annuler</button>
+                                        {{ form(delete_form) }}
+                                        
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <!-- confirmation --> 
+                                {{ form_start(edit_form) }} 
+                                <!-- confirmation -->
+                                <div class="row">
+                                <div class="col-xs-3">
+                                        
+                                        {{ form_widget(edit_form.etat) }} 
+
+                                        <br>
+                                    </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-pencil" style="font-size: 20px;color: black"></i>&nbsp;Modifier le projet " {{ entity.titreProjet }} "</b>
+                                        <div class="well well-sm" style="background:white;margin-top:10px;">
+                                            <p>
+                                                Vos coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule votre adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Catégorie du projet :</label>
+                                        {{ form_widget(edit_form.categorie) }} 
+
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Competence du projet :</label>
+                                        {{ form_widget(edit_form.competence) }} 
+
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Details du projet :</label><br>
+                                        <label class="autre">Nom du projet <i class="glyphicon glyphicon-question-sign"></i></label>
+                                            {{ form_widget(edit_form.titreProjet) }}  
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <label class="autre">Objectif du projet <i class="glyphicon glyphicon-question-sign"></i></label>
+                                        {{ form_widget(edit_form.objectifProjet) }}
+                                            
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <label class="autre">Description du projet <i class="glyphicon glyphicon-question-sign"></i></label>
+                                        {{ form_widget(edit_form.descriptionProjet) }}
+                                            
+                                        <br>
+                                    </div>
+
+                                   <div class="col-md-12">
+                                        <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Budget :</label><br>
+                                    {{ form_widget(edit_form.budget) }}
+                                    
+                                    <br>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Budget :</label><br>
+                                    {{ form_widget(edit_form.devise) }}
+                                    
+                                    <br>
+                                    </div>
+                                   <div class="col-md-12">
+                                        
+                                    {{ form_widget(edit_form.submit) }}
+                                    OU <a href="{{ path('projet_affiche') }}" style="color:black;">  <i><b>Annuler la modification</b></i></a>
+                                    <br>
+                                    </div>
+                                </div>
+                                {{ form_end(edit_form) }}
+                                
+                        </div>
+
+                    </div>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+{% endblock %}

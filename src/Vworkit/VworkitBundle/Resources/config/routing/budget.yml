@@ -1,0 +1,30 @@
+admin_budget:
+    path:     /admin/budget
+    defaults: { _controller: "VworkitBundle:Budget:index" }
+
+admin_budget_show:
+    path:     /admin/budget/{id}/show
+    defaults: { _controller: "VworkitBundle:Budget:show" }
+
+admin_budget_new:
+    path:     /admin/budget/new
+    defaults: { _controller: "VworkitBundle:Budget:new" }
+
+admin_budget_create:
+    path:     /admin/budget/create
+    defaults: { _controller: "VworkitBundle:Budget:create" }
+    requirements: { _method: post }
+
+admin_budget_edit:
+    path:     /admin/budget/{id}/edit
+    defaults: { _controller: "VworkitBundle:Budget:edit" }
+
+admin_budget_update:
+    path:     /admin/budget/{id}/update
+    defaults: { _controller: "VworkitBundle:Budget:update" }
+    requirements: { _method: post|put }
+
+admin_budget_delete:
+    path:     /admin/budget/{id}/delete
+    defaults: { _controller: "VworkitBundle:Budget:delete" }
+    requirements: { _method: post|delete }

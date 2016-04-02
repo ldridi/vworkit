@@ -1,0 +1,163 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body %}
+
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:50px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="modal-content" style="padding:15px">
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            
+                                            <h5 class="autre"><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Détails du projet</h5>
+                                            <div class="wel well-sm">
+
+                                                <p style="line-height:30px;">
+                                                    
+                                                    <i class="glyphicon glyphicon-time"></i>&nbsp;Date publication : &nbsp;{{ entity.projet.dateAjoutProjet|date('Y-m-d') }}<br>
+                                                    <i class="glyphicon glyphicon-usd"></i>&nbsp;Budget :&nbsp;{{ entity.projet.budget.nomBudget }} DNT<br>
+                                                    <i class="glyphicon glyphicon-bullhorn"></i>&nbsp;Nombre de condidats :&nbsp;132 Offres
+
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5 class="autre"><i class="glyphicon glyphicon-pencil"></i>&nbsp;{{ entity.projet.titreProjet }}</h5>
+                                            <h5><b><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Objectif du projet</b></h5>
+                                            <p>
+                                                {{ entity.projet.objectifProjet }}
+                                            </p>
+                                            <h5><b><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Description du projet</b></h5>
+                                            <p>
+                                                {{ entity.projet.descriptionProjet }}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 pull-right">
+                                            <h5 class="autre"><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Compétences rechechées</h5>
+                                            {% for competences in entity.projet.competence %}
+                                                <span class="label label-primary">{{ competences.nomCompetence }}</span>&nbsp;
+                                                
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    {% if entity|length != 0 %}
+                                <h5 class="autre"><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Les offres sur ce projet</h5>
+                                
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Prestataire</th>
+                                                <th>Offre</th>
+                                                <th>Nombre de jour</th>
+                                                <th>date publication</th>
+                                                <th>Operation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr>
+                                                <td>
+                                                    <div class="caption">
+                                                        <!--<img class="img-rounded thumbnail" src="{{ asset('flag/Tunisia.png') }}" style="width:40px;">-->
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <h6>
+                                                            <b>{{ entity.user.username }}</b>
+                                                        </h6>
+                                                    </div>
+                                                </td>
+                                                <td><i class="glyphicon glyphicon-lock"></i>&nbsp;{{ entity.descriptionOffre }}</td>
+                                                <td><i class="glyphicon glyphicon-calendar"></i>&nbsp;{{ entity.dureeOffre }}</td>
+                                                <td><i class="glyphicon glyphicon-time"></i>&nbsp;{{ entity.dateAjoutoffre|date('Y-m-d') }}</td>
+                                                <th><a href="{{ path('message_new', { 'id': entity.user.id }) }}"><i class="glyphicon glyphicon-envelope" style="color: black;"></i></a>&nbsp;&nbsp;
+                                                    <a href="{{ path('reunion_ajout', { 'id': entity.user.id , 'offre': entity.id ,'nom':entity.projet.titreProjet}) }}"><i class="glyphicon glyphicon-ok" style="color: green;"></i></a>
+                                                    &nbsp;&nbsp;<i class="glyphicon glyphicon-minus-sign" style="color: red;"></i></th>
+                                            </tr>
+                                            
+
+                                        </tbody>
+                                    </table>
+                                  
+                                {% endif %}
+                                </div>
+                                        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="{{ path('utilisateur_show', { 'id': entity.user.id }) }}">
+                <div class="col-md-4" style="margin-bottom:20px;">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;padding-bottom:10px;">
+                             <h5 class="autre"><i class="glyphicon glyphicon-user" style="color: black"></i>&nbsp;Proprietaire du projet</h5>
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <img class="img-rounded center-block thumbnail" src="{{ asset('img/hayfa.jpg') }}" style="width:60px;">
+                                    <div class="caption text-center">
+                                        <h6><b>{{ entity.user.Username }}</b></h6>
+                                        <address>
+                                            <i class="glyphicon glyphicon-home"></i>&nbsp;{{ entity.user.adresseUser }}<br>
+                                            
+                                            <i class="glyphicon glyphicon-phone"></i>&nbsp;Tel: (+216) {{ entity.user.telUser }}
+                                        </address>
+                                        <p>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                        </p> 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    {% if(entity.projet.etat.id != 1) %}
+                                        <span class="label label-info">Ouvert</span>
+                                    {% else %}
+                                        <span class="label label-danger">Fermé</span>
+                                    {% endif %}
+                                    <p style="padding-top:5px;">
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Sit</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>
+                                    </p>
+                                    <div id="x"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

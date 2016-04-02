@@ -1,0 +1,70 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_message.html.twig' %}
+                <div class="col-md-9">
+
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-import" style="font-size: 20px;color: black"></i>&nbsp;Boite de réception ({{ nb }})</b>
+                            <div class="well well-sm" style="background:#FCFCFD;margin-top:10px;">
+                                <p>
+                                    Vos coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule  adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                </p>
+                            </div>
+                            <div id="pro">
+                                
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <li class="list-group-item text-center">
+                                    <a href=""><b>Vous avez  {{nb}} Message(s)</b></a>
+                                </li>
+                                {% for message in messages %}
+                                    <a href="{{ path('reponse_new', { 'id': message.id }) }}">
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-1">
+                                                {% if message.from.image %}
+                                                    <img src="{{ asset(message.from.image.webPath) }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% else %}
+                                                    <img src="{{ asset('img/def.jpg') }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% endif %}
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+                                                    <b>{{message.from}}</b></br>
+                                                    <b>Le {{ message.dateajoutMessage|date('d-m-Y') }} à {{ message.dateajoutMessage|date('H:i:s') }}</b><br>
+
+                                                    {{message.texteMessage}}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="{{ path('msg1_delete', { 'id': message.id }) }}"><i class="glyphicon glyphicon-remove"></i></a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    </a>
+                                {% endfor %}
+                            </div>
+
+
+                        </div>    
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script type="text/javascript" src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/affiche.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/affichemsg.js') }}"></script>
+
+{% endblock %}

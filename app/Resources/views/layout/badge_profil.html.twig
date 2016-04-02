@@ -1,0 +1,32 @@
+<div class="col-md-3">
+                <div class="well well-sm text-center" id="badge_profil">
+                    <i class="glyphicon glyphicon-bookmark pull-right" style="margin-top:-10px;margin-left:70px;color:#DA4453;font-size:50px;position:absolute;" ></i>
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if entity.image %}
+                            <img src="{{ asset(entity.image.webPath) }}" class="img-circle img-responsive center-block"style="width:100px; height: 100px;border:3px solid #314459">
+                            {% else %}
+                            <img src="{{ asset('img/def.jpg') }}" class="img-circle img-responsive center-block"style="width:100px; height: 100px;border:3px solid #314459">
+                            {% endif %}
+                        </div>
+                        <div class="col-md-12">
+                            <h5>{{ entity.username }}</h5>
+                            <h5><b>{{ entity.titreUser }}</b></h5>
+                            <h6>{{ entity.villeUser }}, {{ entity.etatUser }} </h6>
+                            <h6><a href="{{ path('utilisateur_show', { 'id': entity.id }) }}" style="color:black;"><button class="btn btn-sm btn-primary">Voir mon profil</button></a></h6>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                            <p style="text-align: justify">{{ entity.descriptionUser }}</p>
+                            <hr>
+                        </div>
+                        <div class="col-md-12">
+                            <h4><b>Mon profil social</b></h4>
+                            <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                            <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                            <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                            <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>

@@ -1,0 +1,52 @@
+
+            <div class="row">
+
+                
+
+                    
+
+                
+
+                <div class="col-md-12" >
+
+                 
+                            
+                            <div class="col-xs-12" style="display:none" id="msgRecom"> 
+                                <div class="alert alert-success alert-dismissible" role="alert" style="color:white;">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  Vos informations on ete bien ajoutés
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="margin-top: 20px;margin-bottom:30px;">
+
+                                <form method="POST" class="ajaxFormRecom" action="{{path('recommandation_create')}}" {{ form_enctype(form) }}>
+                                    <div id="form_body">
+                                        {% include 'UtilisateurBundle:Recommandation:form.html.twig' with {'form': form} %}
+                                    </div>
+                                <div class="col-xs-12">    
+                                    <button type="submit" class="btn btn-primary btn-sm">Recommander</button>
+                                    <img src="{{ asset('img/loading.gif') }}" class="loadRecom" style="width:30px;display:none;">
+                                    {{form_rest(form)}}
+                                </div>
+                                    
+                                </form>
+
+                                
+                            </div>
+
+                           
+
+                        
+
+                </div>
+
+            </div>
+       
+{% block javascripts %}
+<script>
+    initAjaxFormRecom();
+    
+</script>
+
+{% endblock %}

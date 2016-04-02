@@ -1,0 +1,31 @@
+<div class="col-xs-6">    
+        <label class="autre"> Titre  </label>
+
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+            {{ form_widget(form.titreEducation) }}
+        </a>
+        <br>
+    </div>
+    <div class="col-xs-6">    
+        <label class="autre"> Institut  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+            {{ form_widget(form.institutEducation) }}
+        </a>
+        <br>
+    </div>
+    <div class="col-xs-12">    
+        <label class="autre"> année d'achèvement  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+            {{ form_widget(form.dateFinEducation) }}
+        </a>
+        <br>
+    </div>
+    <div class="col-xs-12">    
+        <label class="autre"> Description  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+            {{ form_widget(form.descriptionEducation) }}
+        </a>
+        <br>
+    </div>
+<script type="text/javascript" src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/mainEducation.js') }}"></script>

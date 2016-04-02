@@ -1,0 +1,25 @@
+{% extends('::layout/layout_admin.html.twig') %}
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                {% include '::layout/navigation_profil_admin.html.twig' %}
+                
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+
+                            <h1>LISTE DES STATISTIQUES
+                                
+                            </h1>
+                            {% render(controller('VworkitBundle:Stat:Stat')) %}
+                            {% render(controller('VworkitBundle:StatProjet:Statprojet')) %}
+                            {% render(controller('VworkitBundle:StatCategorie:Statcategorie')) %} 
+                            {% render(controller('VworkitBundle:StatDate:Statdate')) %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

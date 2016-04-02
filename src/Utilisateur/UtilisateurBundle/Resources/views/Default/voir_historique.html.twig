@@ -1,0 +1,197 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+<div id="fb-root"></div>
+
+
+
+    <div class="projet">
+        {% if is_granted("ROLE_USER") %}
+        {% include '::layout/header_user.html.twig' %}
+        
+        
+        {% endif %}
+        <div class="container">
+            <!--<div class="espace_av">
+                <div class="row">
+                    <div class="col-md-3">
+                        {% render(controller('VworkitBundle:Projet:recherche')) %}
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="dropdown" style="margin-top:3px;">
+                                    <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par budget</b>
+                                         <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        {% render(controller('VworkitBundle:Budget:budget')) %}
+                                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="dropdown" style="margin-top:3px;">
+                                    <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par disponibilté</b>
+                                         <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        {% render(controller('VworkitBundle:Etat:etat')) %}
+                                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                        <li class="dropdown" style="margin-top:3px;">
+                                <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par pays</b>
+                                     <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li style="margin-top:5px;"><a href="{{ path('projet_affiche') }}" ><b><i class="glyphicon glyphicon-file"></i>&nbsp;Mes projets</b></a></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('projet_affiche') }}"><b><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Mes Projets Remportés </b></a></li>
+                                    <li class="divider"></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('projet_affiche') }}"><b><i class="glyphicon glyphicon-ok"></i>&nbsp;Mes Offres </b></a></li>
+                                </ul>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>-->
+            <div class="row">
+
+                <div class="col-lg-12">
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            {% include('::layout/navigation_gauche.html.twig') %}
+                        </div> 
+                        <div class="col-md-9 pull-right">
+                            <div class="row">
+                        {% if historiques|length != 0 %}
+                        {% for historique in historiques %}
+                            
+                            <div class="col-md-6">
+                                <div class="panel panel-reverse" style="">
+                                    <div class="panel-heading">
+                                        <p>
+                                            <b><a href="{{ path('projet_show', { 'id': historique.id }) }}" style="color:black;"><i class="glyphicon glyphicon-tasks"></i>&nbsp;{{ historique.projet.titreProjet }}</a></b>
+                                            
+                                            <b class="pull-right">
+                                                    
+                                                    {% if(historique.projet.etat.id != 1) %}
+                                                        <span class="label label-info">{{ historique.projet.etat.nomEtat }}</span>
+                                                    {% else %}
+                                                        <span class="label label-danger">{{ historique.projet.etat.nomEtat }}</span>
+                                                    {% endif %}
+                                                    <a href="{{path('historique_delete',{'id' : historique.id} ) }}" >
+                                                        <i class="glyphicon glyphicon-remove" style="color:red;"></i>
+                                                    </a>
+                                                
+                                            </b>
+                                        </p>
+                                        
+                                    </div>
+                                    <div class="panel-body affiche_projet">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                
+                                                
+                                                
+                                                <div class="col-md-12">
+                                                    
+                                                    <b><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Posté par</b></br>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    
+                                                    <img class="img-rounded thumbnail" src="{{ asset('img/hayfa.jpg') }}" style="width:60px;">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <address>
+                                                        <i class="glyphicon glyphicon-map-marker"></i>&nbsp;{{ historique.user.adresseUser }}</br>
+
+                                                        <i class="glyphicon glyphicon-phone"></i>&nbsp;Tel: (+216) {{ historique.user.telUser }}
+                                                    </address>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <p>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                    </p> 
+                                                    2 reviews
+                                                </div>
+                                            </div>
+                                        </div>
+                                                    <div class="col-md-12">
+                                            <b><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Compétences rechechées</b></br>
+                                            {% for competences in historique.projet.competence %}
+                                                <span class="label label-primary">{{ competences.nomCompetence }}</span>&nbsp;
+                                                
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer" style="background: white;">
+                                    <p>
+                                            <i class="glyphicon glyphicon-time"></i>&nbsp;{{ historique.projet.dateAjoutProjet|date('Y-m-d') }} |
+                                            <i class="glyphicon glyphicon-usd"></i>&nbsp;{{ historique.projet.budget.nomBudget }} DNT &nbsp; |
+                                            <i class="glyphicon glyphicon-bullhorn"></i>&nbsp;132 Offres
+                                        </p>
+                                </div>
+                                </div>
+                            </div>
+                           
+                        {% endfor %}
+                        {% else %}
+                        </div>
+                        <div class="alert alert-info">
+                        <b style="color:white;">Votre historique est vide</b>
+                        </div>
+                         </div>
+                        
+                        {% endif %}
+                    </div>
+                    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                    <div class="col-md-12 ">
+                        <div class="navigation">
+                            {{ knp_pagination_render(historiques) }}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                </div>
+                <!--<div class="col-lg-3" style="position: fixed;right: 0;">
+                    <div class="list-group">
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                  </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

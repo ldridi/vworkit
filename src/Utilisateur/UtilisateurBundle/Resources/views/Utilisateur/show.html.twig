@@ -1,0 +1,352 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+        
+        <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d102239.55615109218!2d10.1432776!3d36.794882949999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2stn!4v1432516969876" width="100%" height="220" frameborder="0" style="border:0"></iframe>
+            </div>
+        </div>
+            <!-- ----------- -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-hand-right" style="font-size: 20px;color: black"></i>&nbsp;Recommander</b>
+                            </h4>
+                  </div>
+                  <div class="modal-body" style="margin-bottom:30px;">
+                    
+                    {% render(controller('UtilisateurBundle:Recommandation:new', { 'id': entity.id })) %}
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <!-- -------- -->
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        <ul id="myTab1" class="nav nav-tabs">
+                            <li><a href="#home3" data-toggle="tab"><center><i class="glyphicon glyphicon-user " style="font-size: 20px;"></i></center></a></li>
+                            <li  class="active"><a href="#profile3" data-toggle="tab"><center><i class="glyphicon glyphicon-th-list " style="font-size: 20px;"></i></center></a></li>
+                            <li><a href="#myTabDrop3" data-toggle="tab"><center><i class="glyphicon glyphicon-folder-open " style="font-size: 20px;"></i></center></a></li>
+                            <li><a href="#myTabDrop4" data-toggle="tab"><center><i class="glyphicon glyphicon-camera" style="font-size: 20px;"></i></center></a></li>
+                            <li><a href="#myTabDrop5" data-toggle="tab"><center><i class="glyphicon glyphicon-camera" style="font-size: 20px;"></i></center></a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade" id="home3">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <b style="font-size: 20px;">PROFILE-A PROPOS</b>
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h5><font color="#3bafda">{{ entity.nomUser|upper }} {{ entity.prenomUser|upper }}</font></h5>
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><font color="#3bafda"><i class="glyphicon glyphicon-user "></i>&nbsp; Nom & Prenom : </font>{{ entity.nomUser}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><font color="#3bafda"><i class="glyphicon glyphicon-home "></i>&nbsp; Addresse: </font>{{ entity.adresseUser}},{{ entity.villeUser}} ,{{ entity.etatUser}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><font color="#3bafda"><i class="glyphicon glyphicon-envelope "></i>&nbsp; email : </font>{{ entity.email}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><font color="#3bafda"><i class="glyphicon glyphicon-phone "></i>&nbsp; Tél : </font>{{ entity.telUser}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><font color="#3bafda"><i class="glyphicon glyphicon-globe "></i>&nbsp; Site web : </font><a href="https://{{ entity.siteUser}}" target="_blink">{{ entity.siteUser}}</a></td>
+                                            </tr>
+                                        </table>
+                                        <q>{{ entity.descriptionUser }}</q>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h4>{{ entity.nomUser|upper }} {{ entity.prenomUser|upper }}</h4>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade  active in" id="profile3">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <b style="font-size: 20px;">PROFILE-A PROPOS</b>
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <h5><font color="#3bafda">EXPERIENCE</font></h5>
+                                        <!-- 1 -->
+                                        {% if(emplois|length == 0) %}
+                                        Pas d'informations
+                                        {% else %}
+                                        {% for emploi in emplois %}
+                                        <b class="pull-left">{{ emploi.nomEmploi }}</b>
+                                        <b class="pull-right"><i class="glyphicon glyphicon-calendar "></i>&nbsp;{{ emploi.dureeEmploi }}</b></br>
+                                    <hr>
+                                    <b class="pull-left"><i class="glyphicon glyphicon-bookmark "></i>&nbsp;{{ emploi.societeEmploi }}</b></br></br>
+                            <p>
+                                {{ emploi.descriptionEmploi }}
+                            </p>
+                            {% endfor %}
+                            {% endif %}
+                            <h5><font color="#3bafda">Education</font></h5>
+                            {% if(educations|length == 0) %}
+                            Pas d'informations
+                            {% else %}
+                            {% for education in educations %}
+                            <b class="pull-left">{{ education.titreEducation }}</b>
+                            <b class="pull-right"><i class="glyphicon glyphicon-calendar "></i>&nbsp;{{ education.datefinEducation }}</b></br>
+                        <hr>
+                        <b class="pull-left"><i class="glyphicon glyphicon-bookmark "></i>&nbsp;{{ education.institutEducation }}</b></br></br>
+                <p>
+                    {{ education.descriptionEducation }}
+                </p>
+                {% endfor %}
+                {% endif %}
+                <h5><font color="#3bafda">CERTIFICATIONS</font></h5>
+                {% if(certifs|length == 0) %}
+                Pas d'informations
+                {% else %}
+                {% for certif in certifs %}
+                <b class="pull-left">{{ certif.nomCertificat }}</b>
+                <b class="pull-right"><i class="glyphicon glyphicon-calendar "></i>&nbsp;{{ certif.dateCertificat|date('Y-m-d') }}</b></br>
+            <hr>
+            <b class="pull-left"><i class="glyphicon glyphicon-bookmark "></i>&nbsp;{{ certif.siteCertificat }}</b></br></br>
+    <p>
+        {{ certif.descriptionCertificat }}</br>
+<i class="glyphicon glyphicon-globe "></i>&nbsp;<a href="{{ certif.linkCertificat }}" target="_blink">{{ certif.linkCertificat }}</a>
+</p>
+{% endfor %}
+{% endif %}
+</div>
+<div class="col-md-5">
+    <!-- design -->
+    <h5><font color="#3bafda">COMPETENCES</font></h5>
+    {% if(entity.competence|length == 0) %}
+    Pas d'informations
+    {% else %}
+    {% for competences in entity.competence %}
+    <span class="label label-primary">{{ competences.nomCompetence }}</span>&nbsp;
+
+    {% endfor %}
+    {% endif %}
+    <!-- plaisir -->
+    <h5><font color="#3bafda">LOISIR</font></h5>
+    {% if(plaisirs|length == 0) %}
+    Pas d'informations
+    {% else %}
+    {% for plaisir in plaisirs %}
+    <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: {{ plaisir.niveau.nomNiveau}}"><span class="sr-only"></span>{{ plaisir.nomPlaisir }} ({{ plaisir.niveau.nomNiveau}})</div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!-- language -->
+    <h5><font color="#3bafda">LANGUE</font></h5>
+    {% if(langs|length == 0) %}
+    Pas d'informations
+    {% else %}
+    {% for lang in langs %}
+    <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: {{ lang.niveau.nomNiveau}}"><span class="sr-only"></span>{{ lang.nomLangue }} ({{ lang.niveau.nomNiveau}})</div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <!--<h5><font color="#3bafda">resume SKILLS</font></h5>
+    <button class="btn btn-sm btn-primary">Télecharger mon resume</button>-->
+
+</div>
+
+
+</div>
+</div>
+<div class="tab-pane fade" id="myTabDrop3">
+    <div class="row">
+        <div class="col-md-10">
+            <b style="font-size: 20px;">PROFILE-PROJET AJOUTE</b>
+
+        </div>
+        <div class="col-md-10" style="margin-top:20px;">
+            {% for projet in projets %}
+            
+                                            <div class="panel panel-reverse" style="">
+                                                <div class="panel-heading">
+                                                    <p>
+                                                        <b><a href="{{ path('projet_show', { 'id': projet.id }) }}" style="color:black;"><i class="glyphicon glyphicon-tasks"></i>&nbsp;{{ projet.titreProjet }}</a></b>
+
+                                                        <b class="pull-right">
+
+
+                                                            {% if(projet.etat.id != 1) %}
+                                                                <span class="label label-info">{{ projet.etat.nomEtat }}</span>
+                                                            {% else %}
+                                                                <span class="label label-danger">{{ projet.etat.nomEtat }}</span>
+                                                            {% endif %}
+                                                             <a href="{{ path('projet_edit', { 'id': entity.id }) }}" ><button style="margin-left:10px;" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Modifier</button></a>
+                                                        </b>
+                                                    </p>
+
+                                                </div>
+                                                <div class="panel-body affiche_projet">
+                                                    <div class="row">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+
+
+
+                                                                <div class="col-md-12">
+
+                                                                    <b><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Description du projet</b></br></br>
+                                                                    {{ projet.descriptionProjet[:50]}} ...
+                                                                </div>
+                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                            <b><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Compétences rechechées</b></br>
+                                                            {% for competences in projet.competence %}
+                                                                <span class="label label-primary">{{ competences.nomCompetence }}</span>&nbsp;
+
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="background: white;">
+                                                    <p>
+                                                        <i class="glyphicon glyphicon-time"></i>&nbsp;{{ projet.dateAjoutProjet|date('Y-m-d') }} |
+                                                        B&nbsp;{{ projet.budget.nomBudget }} DNT &nbsp; |
+                                                        <i class="glyphicon glyphicon-bullhorn"></i>&nbsp;132 Offres
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        
+
+            <hr>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+<div class="tab-pane fade" id="myTabDrop4">
+    <div class="row">
+        <div class="col-md-10">
+            <b style="font-size: 20px;">PROFILE-PORTFOLIO</b>
+
+        </div>
+        <div class="col-md-10">
+            <div class="row" style="margin-top:20px;">
+              {% if(entities|length != 0) %}
+            {% for entitie in entities %}
+              
+            
+                                    
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+        <a href="#"  data-toggle="modal" data-target="#lightbox">
+      <img src="{{ asset(entitie.image.WebPath) }}" class="img-responsive" style="height:200px;" width="100%">
+  </a>
+      <div class="caption">
+
+        <h3 class="text-center">{{ entitie.titrePortfolio}}</h3>
+        <p class="text-center">{{ entitie.descriptionPortfolio}}</p>
+        <p class="text-center"><b>Ajouté le : {{ entitie.dateajoutPortfolio|date('Y-m-d')}}</b></p>
+        <!--<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>-->
+      </div>
+    </div>
+  </div>
+
+                                    
+                                
+                                
+                                {% endfor %}
+            {% else %}
+            Pas d'informations
+        
+            
+            {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="tab-pane fade" id="myTabDrop5">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+    <div class="well well-sm text-center" style="background: url('../../img/ac.PNG');color: white;padding: 10px;">
+        
+<i class="glyphicon glyphicon-bookmark pull-right" style="margin-top:-10px;margin-left:70px;color:white;font-size:50px;position:absolute;" ></i>
+        <div class="row">
+            <div class="col-md-12">
+                {% if entity.image %}
+                <img src="{{ asset(entity.image.webPath) }}" class="img-circle img-responsive center-block"style="width:100px; height: 100px;border:3px solid white">
+                {% else %}
+                <img src="{{ asset('img/def.jpg') }}" class="img-circle img-responsive"style="width:100px; height: 100px;border:3px solid white">
+                {% endif %}
+            </div>
+            <div class="col-md-12">
+                <h4>{{ entity.nomUser }} {{ entity.prenomUser }}</h4>
+                <h4><b>Développeur web php / mysql</b></h4>
+                {% if is_granted("ROLE_USER") %}
+                <a href="{{ path('message_new', { 'id': entity.id }) }}"><i class="glyphicon glyphicon-envelope" style="color:white"></i></a>&nbsp;&nbsp;
+                <a href="" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-hand-right" style="color:white"></i></a>
+            {% endif %}
+            </div>
+            <div class="col-md-12">
+               
+                    <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                                        <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+               
+            </div>
+            <div class="col-md-12">
+                <hr>
+                <p style="text-align: justify">{{ entity.descriptionUser }}</p>
+                <hr>
+            </div>
+            <div class="col-md-12">
+                <h4><b>Mon profil social</b></h4>
+                <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+                <a href="{{ entity.twitterUser }}" target="_blink"><img src="{{ asset('icones/face.png') }}" class="img-rounded"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- code -->
+
+<div class="modal fade" id="lightbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-body affiche_image_grande">
+        <img src="" alt="" class="" />
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+     <!-- code --> 
+{% endblock %}

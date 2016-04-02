@@ -1,0 +1,44 @@
+{% extends('::layout/layout.html.twig') %}
+
+{% block body -%}
+    <h1>Emploi</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomemploi</th>
+                <td>{{ entity.nomEmploi }}</td>
+            </tr>
+            <tr>
+                <th>Dureeemploi</th>
+                <td>{{ entity.dureeEmploi }}</td>
+            </tr>
+            <tr>
+                <th>Societeemploi</th>
+                <td>{{ entity.societeEmploi }}</td>
+            </tr>
+            <tr>
+                <th>Dateajoutemploi</th>
+                <td>{{ entity.dateAjoutEmploi|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('emploi') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('emploi_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

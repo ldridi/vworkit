@@ -1,0 +1,22 @@
+{% block body %}
+    <div class="col-md-3 hidden-sm hidden-xs">
+        
+            <div class="list-group">
+
+{% for reunion in reunions %}
+                <a href="{{path('tacheReunion',{'reunion' : reunion.id} ) }}" class="list-group-item"><i class="glyphicon glyphicon-import"></i>&nbsp;{{ reunion.nomReunion }}</a>
+
+                </a>
+{% endfor %}
+            </div>
+        
+    </div>
+{%endblock %}
+
+
+
+
+
+
+
+

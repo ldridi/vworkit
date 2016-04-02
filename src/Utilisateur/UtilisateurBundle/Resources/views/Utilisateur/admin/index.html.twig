@@ -1,0 +1,105 @@
+{% extends('::layout/layout_admin.html.twig') %}
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                {% include '::layout/navigation_profil_admin.html.twig' %}
+                <div class="span9">
+                    {% render(controller('VworkitBundle:StatDate:Statdate')) %}
+                    
+                </div>
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+                            <h1>LISTE DES UTILISATEURS
+                                <a href="{{ path('admin_projet_new') }}">
+                                    Ajouter nouveau projet
+                                </a>
+                            </h1>
+                            <div class="module-body table">
+                                <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Information Utilisateur</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for entity in entities %}
+                                            <tr class="grade">
+                                                <td>
+                                                    <div class="span3" >
+                                                        <div class="media user">
+                                                            <a class="media-avatar pull-left" href="{{ path('admin_users_show', { 'id': entity.id }) }}">
+                                                               {% if entity.image %}
+                                                                <img src="{{ asset(entity.image.webPath) }}">
+                                                                {% else %}
+                                                                <img src="{{ asset('img/def.jpg') }}">
+                                                                {% endif %}
+                                                                 
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <h3 class="media-title">
+                                                                    {{entity.username }}</br>
+                                                                    
+                                                                    
+                                                                </h3>
+                                                                
+                                                                <p>
+                                                                    <small class="muted">{% if entity.etatUser %} {{entity.etatUser }} {% endif %}</small></p>
+                                                                <div class="media-option btn-group shaded-icon">
+                                                                    <button class="btn btn-small">
+                                                                        <i class="icon-envelope"></i>
+                                                                    </button>
+                                                                    <button class="btn btn-small">
+                                                                        <i class="icon-share-alt"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="span5">
+                                                        
+                                                            <div class="row">
+                                                                <div class="span2">
+                                                                    <p>
+                                                                    <b>Devise :</b></br>
+                                                                    {% if entity.deviseUser %} {{ entity.deviseUser}} {% else %} non defini {% endif %}</br>
+                                                                    <b>Budget min :</b></br>
+                                                                    {% if entity.budgetUser %} {{ entity.budgetUser}} {% else %} non defini {% endif %}</br>
+                                                                    <b>Compte Active  :</b></br>
+                                                                    {% if entity.enabled == 1%} <span class="label label-danger" style="background: green;">Oui</span> {% else %} <span class="label label-danger" style="background: red;">Non</span> {% endif %}</br>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="span2">
+                                                                    <p>
+                                                                    <b>Email :</b></br>
+                                                                    {{ entity.email}}</br>
+                                                                    <b>Date insrit :</b></br>
+                                                                    {{entity.dateAjoutUser|date('Y-m-d H:i:s') }}
+                                                                    
+                                                                    </p>
+                                                                </div>
+                                                                <div class="span1">
+                                                                    <p>
+                                                                    <a href="{{ path('admin_users_show', { 'id': entity.id }) }}"><i class="icon-eye-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    <a href="{{ path('admin_users_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                                                                    </p>
+                                                                </div>
+                                                                    
+                                                            </div>
+                                                        
+                                                    </div>
+                                                    
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

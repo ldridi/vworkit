@@ -1,0 +1,33 @@
+{% for offre in offres %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Prestataire</th>
+            <th>Offre</th>
+            <th>Nombre de jour</th>
+            <th>date publication</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="caption">
+                    <img class="img-rounded thumbnail" src="{{ asset('flag/Tunisia.png') }}" style="width:40px;">
+                    <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                    <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                    <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                    <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                    <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                    <h6>
+                        <b>{{ offre.descriptionOffre }}</b>
+                    </h6>
+                </div>
+            </td>
+            <td><i class="glyphicon glyphicon-lock"></i>&nbsp;Message privé</td>
+            <td><i class="glyphicon glyphicon-calendar"></i>&nbsp;1 jour</td>
+            <td><i class="glyphicon glyphicon-time"></i>&nbsp;30/08/14 12:40</td>
+        </tr>
+        
+    </tbody>
+</table>
+{% endfor %}              

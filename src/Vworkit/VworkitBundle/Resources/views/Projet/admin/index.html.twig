@@ -1,0 +1,61 @@
+{% extends('::layout/layout_admin.html.twig') %}
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                {% include '::layout/navigation_profil_admin.html.twig' %}
+                <div class="span9">
+                    {% render(controller('VworkitBundle:StatProjet:Statprojet')) %}
+                </div>
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+
+                            <h1>LISTE DES PROJETS 
+                                <a href="{{ path('admin_projet_new') }}">
+                                    Ajouter nouveau projet
+                                </a>
+                            </h1>
+                                   
+                            <div class="module-body table">
+                                <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Titre</th>
+                                            
+                                            <th>Description</th>
+                                            <th>Ajouté par</th>
+                                            <th>Ajouté le</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for entity in entities %}
+                                            <tr class="grade">
+                                                <td>{{ entity.titreProjet }}</td>
+                                                
+                                                <td>{{ entity.descriptionProjet }}</td>
+                                                <td><a href="">{{ entity.user.nomUser }} {{ entity.user.prenomUser }}</a></td>
+                                                <td>{% if entity.dateAjoutProjet %}{{ entity.dateAjoutProjet|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                                <td>
+                                                    <a href="{{ path('admin_projet_show', { 'id': entity.id }) }}"><i class="icon-eye-open"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a href="{{ path('admin_projet_edit', { 'id': entity.id }) }}"><i class="icon-edit"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!--<ul>
+                            <li>
+                                
+                            </li>
+                        </ul>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+reponse:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Reponse:index" }
+
+reponse_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Reponse:show" }
+
+reponse_new:
+    path:     /{id}/new
+    defaults: { _controller: "UtilisateurBundle:Reponse:new" }
+
+reponse_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Reponse:create" }
+    requirements: { _method: post }
+
+reponse_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Reponse:edit" }
+
+reponse_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Reponse:update" }
+    requirements: { _method: post|put }
+
+reponse_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Reponse:delete" }
+    requirements: { _method: post|delete }

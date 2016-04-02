@@ -1,0 +1,53 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_message.html.twig' %}
+                <div class="col-md-9">
+
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <b style="font-size: 20px;color:black;" id="a"><i class="glyphicon glyphicon-envelope" style="font-size: 20px;color: black"></i>&nbsp;Message à {{entities.nomUser }} {{entities.prenomUser }}</b>
+                            <div class="well well-sm" style="background:#FCFCFD;margin-top:10px;">
+                                <p>
+                                     coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule  adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                </p>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-xs-12" style="display:none" id="msgMessage"> 
+                                    <div class="alert alert-success alert-dismissible" role="alert" style="color:white;">
+                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                      Vos informations on ete bien ajoutés
+                                    </div>
+                                </div>
+                                <form method="POST" class="ajaxFormMessage" action="{{path('message_create')}}" {{ form_enctype(form) }}>
+                                    <div id="form_body">
+                                        {% include 'UtilisateurBundle:Message:form.html.twig' with {'form': form} %}
+                                    </div>
+                                <div class="col-xs-6" style="margin-bottom:20px;">    
+                                    <button type="submit" class="btn btn-primary btn-sm">Envoyer le message</button>
+                                    <img src="{{ asset('img/loading.gif') }}" class="loadMessage" style="width:30px;display:none;">
+                                    {{form_rest(form)}}
+                                </div>
+                                    
+                                </form>
+
+                            </div>
+                            </div>    
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+{% block javascripts %}
+<script>
+    initAjaxFormMessage();
+    
+</script>
+
+{% endblock %}

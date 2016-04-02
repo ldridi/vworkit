@@ -1,0 +1,314 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+
+
+
+
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+        {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+
+    
+    <div class="container">
+        <div class="espace_av">
+            <div class="row">
+                <div class="col-md-3">
+                    {% render(controller('VworkitBundle:Projet:recherche')) %}
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown pull-right" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par budget</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% render(controller('VworkitBundle:Budget:budget')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown pull-right" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par disponibilté</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% render(controller('VworkitBundle:Etat:etat')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown pull-right" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par Devise</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% render(controller('VworkitBundle:Devise:devise')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-md-3">
+                        
+                        {% include('::layout/navigation_gauche.html.twig') %}
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+                                {% if entities|length != 0 %}
+                        {% for entity in entities %}
+                        <a href="{{ path('projet_show', { 'id': entity.id }) }}" style="color:black;">
+                        <div class="panel panel-reverse" style="border-bottom:2px solid #3BAFDA">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <span class="glyphicon glyphicon-th-list"></span><b>&nbsp;{{ entity.titreProjet }}</b>
+                                    <span>
+                                    <a href="lotfi"><b class="pull-right"><i class="fa fa-star " style="color:#F6AC18;"></i></b></a>
+                                    <b class="pull-right" style="margin-top:-5px;margin-right:10px;">
+                                        {% if(entity.etat.id != 1) %}
+                                        <span class="label label-info">{{ entity.etat.nomEtat }}</span>
+                                        {% else %}
+                                        <span class="label label-danger">{{ entity.etat.nomEtat }}</span>
+                                        {% endif %}
+                                    </b>
+
+                                    </span>
+                                </h3>
+                            </div>
+                            <div class="panel-body affiche_projet" style="padding-left:15px;padding-right:20px;padding-top:10px;color:black;padding-bottom:20px;">
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-bottom:15px;">
+                                        <b ><i class="glyphicon glyphicon-pencil" style="color: black"></i>&nbsp;Description du projet :</b>
+                                        {{entity.descriptionProjet }}      
+                                    </div>
+                                    <div class="col-md-12">
+                                        <b style="margin-bottom:10px;"><i class="glyphicon glyphicon-pencil" style="color: black"></i>&nbsp;Compétences rechechées : </b>
+                                        {% for competences in entity.competence %}
+                                            <span class="label label-primary">{{ competences.nomCompetence }}</span>&nbsp;
+                                        {% endfor %} 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer" style="background:white;"> 
+                                <div class="row">
+                                    <div class="col-md-3">
+                                         <i class="glyphicon glyphicon-time"></i>&nbsp;{{ entity.dateAjoutProjet|date('Y-m-d') }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="glyphicon glyphicon-bullhorn"></i>&nbsp;{{ entity.budget.nomBudget }} DNT
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="glyphicon glyphicon-bullhorn"></i>&nbsp;132 Offres 
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="glyphicon glyphicon-user"></i>&nbsp;Posté par #{{entity.user.id }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        {% endfor %}
+                        {% else %}
+                        <div class="alert alert-info">
+                            <b style="color:white;">Aucun projet trouvé ! Veuillez lancer une autre recherche</b>
+                        </div>
+                        {% endif %}
+                            </div>
+                            <div class="col-md-12 ">
+                                <div class="navigation pull-left">
+                                    {{ knp_pagination_render(entities) }}
+                                </div>
+                            </div>
+                         
+                    </div> 
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <!-- projet competence -->
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <span class="glyphicon glyphicon-th-list"></span><b>Projets dans vos compétences </b>
+                                                                                    </h3>
+                                    </div>
+                                    <div class="panel-body affiche_projet1" style="padding-left:13px;padding-right:13px;">
+                                        <div class="row">
+                                            <div class="projetcompetence">
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('img/projet/anas.jpg') }}" class=" img-responsive img-rounded img_profil">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul class="pull-left" style="margin-left:-50px;">
+                                                        <li><b>Site Web</b></li>
+                                                        <li><b>Budget :</b> 200 €</li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                            <hr>
+                                            <div class="projetcompetence">
+                                                <div class="col-md-3">
+                                                    <img src="{{ asset('img/projet/anas.jpg') }}" class=" img-responsive img-rounded img_profil">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <ul class="pull-left" style="margin-left:-50px;">
+                                                        <li>Site Web</li>
+                                                        <li>Budget : 200 €</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer text-center">
+                                        
+                                            <button type="button" class="btn btn-success btn-sm btn-block">
+                                            Afficher tous</button>
+                                    </div>
+                            </div>
+                            </div>
+                            <!-- sondage 1 -->
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <span class="glyphicon glyphicon-signal"></span><b>Comment est mon site ? </b>
+                                            
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body affiche_projet1" style="padding-left:20px;padding-right:20px;">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios">
+                                                        <font color="black">Excellent</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios">
+                                                        <font color="black">Bien</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios">
+                                                        <font color="black">Mal</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios">
+                                                        <font color="black">Peut être amélioré</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios">
+                                                        <font color="black">Aucun commentaire</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer text-center">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            Votez</button>
+                                            <button type="button" class="btn btn-success btn-sm ">
+                                            Résultat</button>
+                                    </div>
+                            </div>
+                            </div>
+                            <!-- sondage 2 -->
+                            <div class="col-md-12">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <span class="glyphicon glyphicon-signal"></span><b>Où trouvez-vous vos nouvelles ?</b>
+                                            
+                                        </h3>
+                                    </div>
+                                    <div class="panel-body affiche_projet1" style="padding-left:20px;padding-right:20px;">
+                                        <ul class="list-group">
+                                            <li class="list-group-item">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="optionsRadios">
+                                                        <font color="black">Internet</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="optionsRadios">
+                                                        <font color="black">Télévision</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="optionsRadios">
+                                                        <font color="black">Radio</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="optionsRadios">
+                                                        <font color="black">Journal</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="optionsRadios">
+                                                        <font color="black">Autres</font>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-footer text-center">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            Votez</button>
+                                            <button type="button" class="btn btn-success btn-sm ">
+                                            Résultat</button>
+                                    </div>
+                            </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

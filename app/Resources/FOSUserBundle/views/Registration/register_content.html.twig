@@ -1,0 +1,55 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="login center-block">
+        
+
+            <div class="col-md-4 col-md-offset-4">
+        <div class="cards card-container text-center">
+        
+        
+            
+            
+            <img id="profile-img" src="{{ asset('img/logo10.png') }}" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="form-signin fos_user_registration_register">
+                {{ form_start(form) }}
+                
+                    
+                        
+                        <b style="color:red;">{{ form_errors(form.email) }}</b>
+                        {{ form_widget(form.email) }}
+                       
+                        <b style="color:red;">{{ form_errors(form.username) }}</b>
+                        {{ form_widget(form.username) }}
+                       
+                
+                        <b style="color:red;">{{ form_errors(form.plainPassword.first) }}</b>
+                        {{ form_widget(form.plainPassword.first) }}
+                        
+                    
+                        
+                            {{ form_widget(form.plainPassword.second) }}
+                        
+                
+               
+                    
+                     
+                    
+                   
+                        <input style="margin-bottom:20px;" type="submit" class="btn btn-sm btn-primary btn-block btn-signin" value="{{ 'registration.submit'|trans }}" />
+                    
+
+                
+                {{ form_end(form) }}
+            </form>
+
+            Vous etes déja membre ?
+             <a href="{{ path('fos_user_security_login') }}" class="forgot-password" >
+                 Se Connecter
+            </a>
+        
+</div>
+</div>
+</div>
+   <!--<label class="toggle" style="padding-top:10px;"><input type="checkbox"> <span class="handle"></span></label>&nbsp;<font style="color:black"><b>accepter les termes et conditions d'utilisation.</b></font>
+                        <p><font color="red">*</font> <font color="black">Champs Obligatoires</font></p>-->

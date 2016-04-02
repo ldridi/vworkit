@@ -1,0 +1,80 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+
+
+
+
+    <div class="projet">
+        {% if is_granted("ROLE_USER") %}
+        {% include '::layout/header_user.html.twig' %}
+        
+        
+        {% endif %}
+        <div class="container">
+            
+            
+                    
+                    <div class="row">
+                        
+                        
+                        <div class="col-md-12">
+                           
+                            <div class="row">
+                        {% if entities|length != 0 %}
+                        {% for entity in entities %}
+                          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">  
+                            <div class="thumbnail" style="padding-bottom:-10px;">
+                             <div class="caption">
+                                <a href="{{ path('favorisDelete', { 'id': entity.id }) }}"><button style="border-radius:50%;margin-top:150px;" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i></button></a>
+                            </div>
+                        <a href="{{ path('utilisateur_show', { 'id': entity.to.id }) }}" style="color:black;font-weight: normal;">
+                            
+
+                            <div class="card" style="border:0px;">
+                                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                                <div class="avatar">
+                                   {% if entity.to.image %}
+                                                <img src="{{ asset(entity.to.image.webPath) }}" >
+                                                {% else %}
+                                                <img src="{{ asset('img/def.jpg') }}" >
+                                                {% endif %}
+                                </div>
+                                <div class="content">
+                                    <b>{{ entity.to.username }}</b>
+                                    <p><b>Développeur web php / mysql</b><br>
+                                       Membre depuis&nbsp;{{ entity.dateajoutfavoris|date('Y-m-d') }}</p>
+                                    <p><a href="#" class="btn btn-primary btn-sm" role="button">Consulter Profil</a>
+                                    
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+            
+                      
+                           
+                        {% endfor %}
+                        {% else %}
+                        </div>
+                        <div class="alert alert-info">
+                        <b style="color:white;">Liste de favoris est vide !</b>
+                        </div>
+                         </div>
+                        
+                        {% endif %}
+                    </div>
+                    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="col-md-12 ">
+                            <div class="navigation">
+                                {{ knp_pagination_render(entities) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+               
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% for historique in historiques %}
+    <a href="{{path('projet_show',{'id' : historique.projet.id} ) }}" style="color:black;">
+    <div class="col-md-2" >
+        <div class="histo_projet">
+            <i class="glyphicon glyphicon-screenshot"></i>&nbsp;<b>Visité : {{ historique.dateAjoutHistorique|date('Y-m-d') }}</b></br>
+            <i class="glyphicon glyphicon-screenshot"></i>&nbsp;<b>{{ historique.projet.titreProjet }}</b></br>
+            {% if(historique.projet.etat.id != 1) %}
+                <span class="label label-info">Ouvert</span>
+            {% else %}
+                <span class="label label-danger">Fermé</span>
+            {% endif %}
+        </div>
+    </div>
+    </a>
+
+{% endfor %}
+{% if historiques|length != 0 %}
+ <a href="{{ path('historique_show') }}">
+                  <div class="col-md-2" >
+                    <div class="text-center histo_projet">
+                      <i class="glyphicon glyphicon-screenshot" style="margin-top:12px;font-size:50px;color:black;"></i>
+                    </div>
+                  </div>
+                  </a>
+              
+              {% else %}
+ 
+                  <div class="col-md-2" >
+                    <div class="text-center histo_projet" style="padding-top:35px;">
+                      <b style="margin-bottom:20px;font-size:30px;">vide</b>
+                    </div>
+                  </div>
+                  {% endif %}

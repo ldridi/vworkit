@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %} Vworkit {% endblock %}</title>
+        <link href="{{ asset('css/tooltip-bloated.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/site.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/social-buttons.css') }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/fav.png') }}" />
+    </head>
+    <body>
+        <!--
+        <div class="litige pull-right" >
+            <div class="well well-sm text-center affiche_litige" style="display:none;">
+                {% if is_granted("ROLE_USER") %}
+                    <p class="center-block" style="margin-top:50px;">
+                        <img src="{{ asset('img/def.jpg') }}" class="img-circle img-responsive center-block"style="width:100px; height: 100px;border:3px solid #19A7D6;margin-bottom:50px;">
+                        
+                    </p>
+                {% else %}
+
+                    <p class="center-block" style="margin-top:50px;">
+                        <img src="{{ asset('img/def.jpg') }}" class="img-circle img-responsive center-block"style="width:100px; height: 100px;border:3px solid #19A7D6;margin-bottom:50px;">
+                        <h4>Seules les membres peuvent interagir avec cette boite..</h4>
+                        <a href="{{ path('fos_user_security_login') }}">  
+
+                            <button class="btn btn-sm btn-primary">Se Connecter</button>
+                            
+                        </a>
+                        <a href="{{ path('fos_user_registration_register') }}">  
+
+                            <button class="btn btn-sm btn-primary">S'inscrire</button>
+                            
+                        </a>
+                    </p>
+                {% endif %}
+            </div>
+            <div class="click_litige">
+                
+                <i class="glyphicon glyphicon-cog" id="lotfi" style="font-size:50px;color:#1AA8D6;"></i>
+            </div>
+        </div>-->
+        <!-- navbar -->
+
+        <!-- navbar -->
+        <!-- bug -->
+        <div class="feedback left">
+      <div class="tooltips">
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-primary dropdown-toggle btn-circle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background:#2386C8;">
+              <i class="fa fa-bug fa-2x" title="Report Bug" ></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-form">
+              <li>
+                <div class="report">
+                  <h2 class="text-center" style="font-size:20px;">Problème ?</h2>
+                  <form class="doo" method="post" action="report.php">
+                    <div class="col-sm-12">
+                      <textarea required name="comment" class="form-control" placeholder="S'il vous plaît nous dire ce bug ou problème que vous avez trouvé, fournir autant de détails que possible."></textarea>
+                      
+                     </div>
+                     <div class="col-sm-12 clearfix">
+                      <button class="btn btn-primary btn-block">Envoyer le rapport</button>
+                     </div>
+                 </form>
+                </div>
+                <div class="loading text-center hideme">
+                  <h2>Please wait...</h2>
+                  <h2><i class="fa fa-refresh fa-spin"></i></h2>
+                </div>
+                <div class="reported text-center hideme">
+                  <h2>Thank you!</h2>
+                  <p>Your submission has been received, we will review it shortly.</p>
+                   <div class="col-sm-12 clearfix">
+                      <button class="btn btn-success btn-block do-close">Close</button>
+                   </div>
+                </div>
+                <div class="failed text-center hideme">
+                  <h2>Oh no!</h2>
+                  <p>It looks like your submission was not sent.<br><br><a href="mailto:">Try contacting us by the old method.</a></p>
+                   <div class="col-sm-12 clearfix">
+                      <button class="btn btn-danger btn-block do-close">Close</button>
+                   </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </div>
+        <!-- bug -->
+        <div class="aidesite" style="display:none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <ul id="myTab1" class="nav nav-tabs nav-justified">
+                                <li class="active"><a href="#home1" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Porteur de projet</a></li>
+                                <li><a href="#profile1" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Préstataire</a></li>
+                                <li><a href="#profile2" data-toggle="tab"><i class="glyphicon glyphicon-cog"></i>&nbsp;&nbsp;Instructeur</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div class="tab-pane fade active in" id="home1">
+                                    <div class="well well-sm">
+                                        <!--<div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/v/V5XAufmquKM"></iframe>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile1">
+                                    <div class="well well-sm">
+                                        <!--<div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/v/V5XAufmquKM"></iframe>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="profile2">
+                                    <div class="well well-sm">
+                                        <!--<div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/v/V5XAufmquKM"></iframe>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if is_granted("ROLE_USER") %}
+        <div id="historique" style="display:none;">
+            <div class="container">
+                <h6 class="pull-right" ><i class="glyphicon glyphicon-remove-circle exit" style="color:white;"></i></h6>
+                <h5 style="color:white;">Vos derniers projets consultés</h5>
+                <div class="row">
+                    {% render(controller('UtilisateurBundle:Historique:historique')) %}
+
+                </div>
+            </div>
+        </div>
+
+        <div id="moncompte" style="display:none;">
+            <div class="container">
+                <div class="row">
+                    <div class="tabbable tabs-left clearfix">
+                    <ul class="nav nav-tabs">
+
+                        <li class="active"><a href="{{path('utilisateur_profil') }}" ><center><i class="glyphicon glyphicon-user " style="font-size: 20px;"></i>        </center></a></li>
+
+                        <li><a href="{{path('utilisateur_apropos') }}"><center><i class="glyphicon glyphicon-th-list " style="font-size: 20px;"></i></center></a></li>
+                        <li><a href="{{path('info') }}"><center><i class="glyphicon glyphicon-align-left " style="font-size: 20px;"></i></center></a></li>
+                        <li><a href="{{path('parametre') }}"><center><i class="glyphicon glyphicon-cog" style="font-size: 20px;"></i></center></a></li>
+                        <li><a href="{{path('finance') }}"><center><i class="glyphicon glyphicon-briefcase" style="font-size: 20px;"></i></center></a></li>
+                        <li><a href="{{path('utilisateur_reseau') }}"><center><i class="glyphicon glyphicon-signal" style="font-size: 20px;"></i></center></a></li>
+                        <li><a href="{{path('utilisateur_notification') }}"><center><i class="glyphicon glyphicon-bell" style="font-size: 20px;"></i></center></a></li>
+                       
+                        <li><a href="{{path('fos_user_security_logout') }}"><center><i class="glyphicon glyphicon-tags" style="font-size: 20px;"></i></center></a></li>
+                        <li><a href="{{path('fos_user_security_logout') }}"><center><i class="glyphicon glyphicon-off" style="font-size: 20px;"></i></center></a></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" style="padding-top:20px;" href="{{ path('acceuil') }}"><font style="color:white;font-size:25px;"><img src="{{ asset('img/logo10.png') }}" width="90" style="padding-top:8px;"></font>&nbsp;<b style="color:white;padding-top:120px;">Beta</b></a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <!--<ul class="nav navbar-nav">
+<li><a href=""><button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Déposer un projet</button> <span class="sr-only">(current)</span></a></li>
+<li><a href=""><button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-star"></i>&nbsp;Rechercher un prestataire</button></a></li>
+<li><a href="#"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-facetime-video"></i>&nbsp;Devenir instructeur</button></a></li>
+</ul>-->
+                        <ul class="nav navbar-nav navbar-right">
+                            <!--<li style="margin-top:5px;"><a href="#" style="color:white;"><b>Annonces</b></a></li>
+<li style="margin-top:5px;"><a href="#" style="color:white;"><b>Blog</b></a></li>
+<li style="margin-top:5px;"><a href="#" style="color:white;"><b>Forum</b></a></li>-->
+                            <!--<li style="margin-top:5px;"><a href="#" style="color:white;"><b><i class="glyphicon glyphicon-question-sign"></i>&nbsp;Comment ça marche ?</b></a></li>-->
+                            {% if not is_granted("ROLE_USER") %}
+                            <!--<li style="margin-top:5px;"><a href="" style="color:white;"><b><i class="glyphicon glyphicon-comment"></i>&nbsp;Forum</b></a></li>-->
+                            <li style="margin-top:5px;"><a href="{{ path('projet') }}" style="color:white;"><b><i class="glyphicon glyphicon-file"></i>&nbsp;Les Projets</b></a></li>
+                            <li style="margin-top:5px;"><a href="{{ path('utilisateur') }}" style="color:white;"><b><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;Récruter</b></a></li>
+                            <li style="margin-top:5px;"><a  style="color:white;" class="comment"><b><i class="glyphicon glyphicon-question-sign"></i>&nbsp;Comment ça marche ?</b></a></li>
+                            <li style="margin-top:5px;"><a href="{{ path('fos_user_registration_register') }}" style="color:white;"><b><i class="glyphicon glyphicon-user"></i>&nbsp;Inscription</b></a></li>
+                            <li style="margin-top:5px;"><a href="{{ path('fos_user_security_login') }}" style="color:white;"><b><i class="glyphicon glyphicon-user"></i>&nbsp;Connexion</b></a></li>
+                            {% else %}
+                            <li><a href="{{ path('projet_new') }}"><button class="btn btn-default btn-sm "><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Déposer un projet</button> <span class="sr-only">(current)</span></a></li>
+                           <!-- <li><a href=""><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-facetime-video"></i>&nbsp;Devenir instructeur</button></a></li>-->
+                            <!--<li style="margin-top:5px;"><a href="" style="color:white;"><b><i class="glyphicon glyphicon-comment"></i>&nbsp;Forum</b></a></li>-->
+                            <li style="margin-top:5px;"><a href="{{ path('projet') }}" style="color:white;"><b><i class="glyphicon glyphicon-file"></i>&nbsp;Les Projets</b></a></li>
+                            <li style="margin-top:5px;"><a href="{{ path('utilisateur') }}" style="color:white;"><b><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;Récruter</b></a></li>
+                            <li style="margin-top:5px;"><a  style="color:white;" class="bottom comment" data-placement="top" data-toggle="tooltip" data-original-title="Tooltip on top"><b><i class="glyphicon glyphicon-question-sign"></i>&nbsp;Comment ça marche ?</b></a></li>
+                            <!--<li class="dropdown" style="margin-top:3px;">
+<a href="#" style="color:white;" class="dropdown-toggle" data-toggle="dropdown">
+<b><img src="{{ asset('img/anas.jpg') }}" width="25px" class="img-rounded img_profil">&nbsp;&nbsp;
+
+{{ app.user.username }}
+
+</b> <b class="caret"></b></a>
+<ul class="dropdown-menu" role="menu">
+{% if (app.request.attributes.get('_route') =='info') %}
+<li><a href="{{path('info')}}" class="list-group-item active"><i class="glyphicon glyphicon-user"></i>&nbsp;Informations du compte</a></li>
+{% else %}
+<li><a href="{{path('info')}}" class="list-group-item"><i class="glyphicon glyphicon-user"></i>&nbsp;Informations du compte</a></li>
+{% endif %}
+{% if (app.request.attributes.get('_route') =='parametre') %}
+<li><a href="{{path('parametre') }}" class="list-group-item active"><i class="glyphicon glyphicon-lock"></i>&nbsp;Parametres du compte</a></li>
+{% else %}
+<li><a href="{{path('parametre') }}" class="list-group-item"><i class="glyphicon glyphicon-lock"></i>&nbsp;Parametres du compte</a></li>
+{% endif %}
+{% if (app.request.attributes.get('_route') =='finance') %}
+<li><a href="{{path('finance') }}" class="list-group-item active"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Parametre de finance</a></li>
+{% else %}
+<li><a href="{{path('finance') }}" class="list-group-item"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Parametre de finances</a></li>
+{% endif %} 
+{% if (app.request.attributes.get('_route') =='reseau') %}
+<li><a href="{{path('utilisateur_reseau') }}" class="list-group-item active"><i class="glyphicon glyphicon-signal"></i>&nbsp;Paramètres des Réseaux Sociaux
+</a></li>
+{% else %}
+<li><a href="{{path('utilisateur_reseau') }}" class="list-group-item"><i class="glyphicon glyphicon-signal"></i>&nbsp;Paramètres des Réseaux Sociaux
+</a></li>
+{% endif %}
+{% if (app.request.attributes.get('_route') =='notification') %}
+<li><a href="{{path('utilisateur_notification') }}" class="list-group-item active"><i class="glyphicon glyphicon-phone"></i>&nbsp;Notification</a></li>
+{% else %}
+<li><a href="{{path('utilisateur_notification') }}" class="list-group-item"><i class="glyphicon glyphicon-phone"></i>&nbsp;Notification</a></li>
+{% endif %}
+
+<li class="divider"></li>
+{% if (app.request.attributes.get('_route') =='invite') %}
+<li><a href="{{path('invite') }}" class="list-group-item active"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Inviter des amis</a></li>
+{% else %}
+<li><a href="{{path('invite') }}" class="list-group-item"><i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Inviter des amis</a></li>
+{% endif %}
+{% if (app.request.attributes.get('_route') =='examen') %}
+<li><a href="{{path('examen') }}" class="list-group-item active"><i class="glyphicon glyphicon-th"></i>&nbsp;Passer un examen</a></li>
+{% else %}
+<li><a href="{{path('examen') }}" class="list-group-item"><i class="glyphicon glyphicon-th"></i>&nbsp;Passer un examen</a></li>
+{% endif %}
+<li class="divider"></li>
+<li><a href="{{path('fos_user_security_logout') }}"><i class="glyphicon glyphicon-off"></i>&nbsp;Déconnexion</a></li>
+</ul>
+</li>-->    
+ 
+
+                            
+                            {% if(app.user.image)%}
+                                <li style="margin-top:2px;"><a style="color:white;" class="param1"><b><img src="{{ asset(app.user.image.webPath) }}" width="25px" height="25px;" class="img-rounded img_profil"></b></a></li>
+                            {% else %}
+                                <li style="margin-top:2px;"><a style="color:white;" class="param1"><b><img src="{{ asset('img/def.jpg') }}" width="25px" height="25px;" class="img-rounded img_profil"></b></a></li>
+                            {% endif %}
+                            
+                            <li style="margin-top:5px;"><a style="color:white;" class="param"><b><i class="glyphicon glyphicon-screenshot"></i></b></a></li>
+
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </div>
+                <!-- /.container-fluid -->
+            </nav>
+        </div>
+        {% block body %}{% endblock %}
+        <!--<div class="container-fluid" style="background:#37BC9B;padding-top:10px;padding-bottom:10px;">
+<div class="container">
+<div class="row">
+
+<div class="col-md-3">
+<div class="quick1">
+<h5><b><i class="glyphicon glyphicon-globe" style="color:white;"></i>&nbsp;&nbsp;<u><a href="index.php">Vworkit</a></u></b></h5>
+<h5><a href="aboutus.php"><i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp;About us</a></h5>
+<h5><a href="contact.php"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;Contact us</a></h5>
+<h5><a href="#"><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;&nbsp;FAQ</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Pricing</a></h5>
+</div>
+</div>
+<div class="col-md-3">
+<div class="quick1">
+<h5><b><i class="glyphicon glyphicon-globe" style="color:white;"></i>&nbsp;&nbsp;<u><a href="index.php">Categorie</a></u></b></h5>
+<h5><a href="aboutus.php"><i class="glyphicon glyphicon-pushpin"></i>&nbsp;&nbsp;Développement Web</a></h5>
+<h5><a href="contact.php"><i class="glyphicon glyphicon-send"></i>&nbsp;&nbsp;Design</a></h5>
+<h5><a href="#"><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;&nbsp;Rédaction</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Seo</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Mobile</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Communication</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;E-commerce</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Réseau</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Gestion du projet</a></h5>
+<h5><a href="pricing.php"><i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;3D</a></h5>
+</div>
+</div>
+<div class="col-md-3">
+<!-- <div class="quick1">
+<h5><b><i class="glyphicon glyphicon-globe"style="color:white;"></i>&nbsp;&nbsp;<u><a>Connect<a></u></b></h5>
+<h5><a target="_blink"href="https://www.facebook.com/pages/Hala-Doctors/1452214745065413"><img src="icones/fb.png">&nbsp;&nbsp;Facebook</a></h5>
+<h5><a href="#"><img src="icones/tt.png">&nbsp;&nbsp;twitter</a></h5>
+<h5><a href="#"><img src="icones/g+.png">&nbsp;&nbsp;Google+</a></h5>
+<h5><a href="#"><img src="icones/in.png">&nbsp;&nbsp;LinkedIn</a></h5>
+</div>
+</div>
+<!--<div class="col-md-3">
+<div class="quick1">
+<h5><b><i class="glyphicon glyphicon-plus-sign" style="color:white;"></i>&nbsp;&nbsp;<u><a>More</a></u></b></h5>
+<h5><a href="terms.php"><i class="glyphicon glyphicon-tags"></i>&nbsp;&nbsp;Terms & Condition</a></h5>
+<h5><a href="privacy.php"><i class="glyphicon glyphicon-tag"></i>&nbsp;&nbsp;Privacy policy</a></h5>
+</div>
+</div>
+</div>
+
+</div>
+</div>-->
+        <div class="acceuil1">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <b><u>C'est quoi Vworkit</u></b>
+                        <p style="margin-top:20px;line-height:25px;">
+                            ‪Vworkit‬ relie les entreprises avec des Travailleurs indépendants en ligne. Vworkit été fondée en 2015 En Tunisie, pour relever les défis du chômage dans le monde arabe par la quasi reliant expert talents régionaux avec le travail flexible, des emplois en ligne et la possibilité de travailler à domicile. Vworkit est le premier marché de travail en ligne de la région en fournissant les hommes de talent, les femmes et les jeunes de l'Afrique du Nord avec une plate-forme pour commercialiser leurs compétences (par exemple, la traduction, le développement, la conception graphique), vitrine de leur travail, se faire embaucher et gagner un revenu en ligne en toute sécurité.
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <b><u>Lien Utiles</u></b>
+                        <p style="margin-top:20px;">
+                            <ul style="line-height:25px;margin-left:-40px;">
+                                <li><a href="{{ path('acceuil') }}" style="color:white;">Page d'accueil</a></li>
+                                <li><a href="{{ path('page') }}" style="color:white;">A propos Vworkit</a></li>
+                                <li><a href="{{ path('utilisateur') }}" style="color:white;">Touvez des prestataires</a></li>
+                                <li><a href="{{ path('projet') }}" style="color:white;">Trouvez des projets</a></li>
+                                <li><a href="{{ path('acceuil') }}" style="color:white;">Comment ça marche ?</a></li>
+                                <li><a href="{{ path('page') }}" style="color:white;">Contactez nous</a></li>
+                                <li><a href="{{ path('page') }}" style="color:white;">L'équipe</a></li>
+                                <li><a href="{{ path('timeline') }}" style="color:white;">FeedBack</a></li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <b><u>Paiement en ligne</u></b>
+                        <p style="margin-top:20px;">
+                            <ul style="line-height:40px;margin-left:-40px;">
+                                <li><img src="{{ asset('img/compte/cirrus.png') }}"></li>
+                                <li ><img src="{{ asset('img/compte/mastercard.png') }}"></li>
+                                <li><img src="{{ asset('img/compte/mestro.png') }}"></li>
+                                <li><img src="{{ asset('img/compte/paypal2.png') }}"></li>
+                                <li><img src="{{ asset('img/compte/visa.png') }}"></li>
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="col-md-2">
+                        <b><u>Réseaux sociaux</u></b>
+                        <p style="margin-top:20px;">
+                            <ul style="line-height:25px;margin-left:-40px;">
+                                <li><img src="{{ asset('img/social/f.png') }}" width="15" class="img-rounded">&nbsp;&nbsp;Aimer</li>
+                                <li><img src="{{ asset('img/social/t.png') }}" width="15" class="img-rounded">&nbsp;&nbsp;Twitter</li>
+                                <li><img src="{{ asset('img/social/g.png') }}" width="15" class="img-rounded">&nbsp;&nbsp;Rejoigner</li>
+                                <li><img src="{{ asset('img/social/y.png') }}" width="15" class="img-rounded">&nbsp;&nbsp;Consulter</li>
+                            </ul>
+                        </p>
+                    </div>       
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center" style="border-top:1px solid white;">
+                        <b>Tous les droits sont associés à Vworkit {{ "now"|date("Y") }}</b>
+                        
+                    </div>
+                           
+                </div>
+            </div>
+        </div>
+
+        {% block javascripts %}{% endblock %}
+
+        <script type="text/javascript" src="{{ asset('js/modernizr.custom.53451.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery.gallery.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/affichenbrmsg.js') }}"></script>
+
+
+    </body>
+</html>

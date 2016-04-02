@@ -1,0 +1,56 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<div class="row">
+    <div class="col-md-6" style="margin-bottom:10px;">
+        <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Mot de passe oublié ?</h4>
+                    {% if invalid_username is defined %}
+                        <div class="alert alert-danger alert-sm">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <strong>
+                                <div><b style="color:white;">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</b></div>
+                            </strong>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <i class="glyphicon glyphicon-user"></i>&nbsp;
+                            <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                            <input class="form-control input-sm" type="text" id="username" name="username" required="required" />
+                            <br>
+                        </div>
+                        <div class="col-xs-12">
+                            <p> 
+                                Pas encore membre ? <a href="{{ path('fos_user_registration_register') }}">Cliquez-ici</a> pour vous inscrire
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"> 
+                    <input class="btn btn-primary btn-sm pull-left" type="submit" value="{{ 'resetting.request.submit'|trans }}" />
+                </div>
+            </div>
+        </form>
+    </div>
+                <div class="col-md-6">
+        <div class="well well-sm">
+
+            <strong>Twitter, Inc.</strong><br>
+            <p>
+                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+            </p>
+            <strong>Twitter, Inc.</strong><br>
+            <p>
+                Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un peintre anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
+            </p>
+            
+
+
+        </div>
+    </div>
+</div>
+
+

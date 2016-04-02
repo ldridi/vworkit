@@ -1,0 +1,71 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    {% render(controller('UtilisateurBundle:Favoris:carousel')) %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        {% include '::layout/navigation_profil.html.twig' %}
+                        <div id="myTabContent" class="tab-content">
+                           
+                            
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <b style="font-size: 20px;">PROFILE-A PROPOS</b>
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="well well-sm" style="background:#F7F7F7;">
+                                        <h5><font color="#314459"><i class="glyphicon glyphicon-user "></i>&nbsp;EXPERIENCE</font></h5>
+                                        {% render(controller('UtilisateurBundle:Emploi:new')) %}
+                                        </div>
+                                        <div class="well well-sm" style="background:#F7F7F7;">
+                                        <h5><font color="#314459"><i class="glyphicon glyphicon-user "></i>&nbsp;EDUCATION</font></h5>
+                                        {% render(controller('UtilisateurBundle:Education:new')) %}
+                                        </div>
+                                        <div class="well well-sm" style="background:#F7F7F7;">
+                                        <h5><font color="#314459"><i class="glyphicon glyphicon-user "></i>&nbsp;CERTIFICATIONS</font></h5>
+                                        {% render(controller('UtilisateurBundle:Certificat:new')) %}
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="col-md-5">
+                                        
+                                        
+                                        
+                                        <!-- plaisir -->
+                                        <div class="well well-sm" style="background:#F7F7F7;">
+                                        <h5><font color="#314459"><i class="glyphicon glyphicon-user "></i>&nbsp;LOISIR</font></h5>
+                                        {% render(controller('UtilisateurBundle:Plaisir:new')) %}
+                                        </div>
+                                        <!-- language -->
+                                        <div class="well well-sm" style="background:#F7F7F7;">
+                                        <h5><font color="#314459"><i class="glyphicon glyphicon-user "></i>&nbsp;LANGUE</font></h5>
+                                        {% render(controller('UtilisateurBundle:Langue:new')) %}
+                                        </div>
+                                        
+                                        <h5><font color="#314459"><i class="glyphicon glyphicon-download "></i>&nbsp;RESUME SKILLS</font></h5>
+                                        <button class="btn btn-sm btn-success">Télecharger mon resume</button>
+
+                                    </div>
+
+                                    
+                                </div>
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include '::layout/badge_profil.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+commentaire_tache:
+    path:     /profil/tache/commentaire
+    defaults: { _controller: "VworkitBundle:CommentaireTache:index" }
+    
+commentaire_tache_show:
+    path:     /profil/tache/commentaire/{id}/show
+    defaults: { _controller: "VworkitBundle:CommentaireTache:show" }
+
+commentaire_tache_new:
+    path:     /profil/tache/commentaire/new
+    defaults: { _controller: "VworkitBundle:CommentaireTache:new" }
+
+commentaire_tache_create:
+    path:     /profil/tache/commentaire/create
+    defaults: { _controller: "VworkitBundle:CommentaireTache:create" }
+    requirements: { _method: post }
+
+commentaire_tache_delete:
+    path:     /profil/tache/commentaire/{id}/delete
+    defaults: { _controller: "VworkitBundle:CommentaireTache:delete" }
+    requirements: { _method: post|delete }
+    
+tache_edit:
+    path:     /profil/tache/{id}/edit
+    defaults: { _controller: "VworkitBundle:Tache:edit" }
+
+tache_update:
+    path:     /profil/tache/{id}/update
+    defaults: { _controller: "VworkitBundle:Tache:update" }
+    requirements: { _method: post|put }
+
+tache_delete:
+    path:     /profil/tache/{id}/delete
+    defaults: { _controller: "VworkitBundle:Tache:delete" }
+    requirements: { _method: post|delete }
+    
+tachetache_delete:
+    path:     /profil/tache/{id}/delete
+    defaults: { _controller: "VworkitBundle:Tache:deletetache" }
+    
+tacheReunion:
+    pattern:  /profil/tache/reunion/{reunion}
+    defaults: { _controller: VworkitBundle:Reunion:tacheReunion }
+    
+progressionTache:
+    pattern:  /profil/tache/progression/{progression}
+    defaults: { _controller: VworkitBundle:Progression:progressions }

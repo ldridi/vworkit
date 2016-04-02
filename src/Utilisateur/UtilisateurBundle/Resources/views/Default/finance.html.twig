@@ -1,0 +1,82 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        {% include '::layout/navigation_profil.html.twig' %}
+                        <div id="myTabContent" class="tab-content">
+
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <b style="font-size: 20px;">PROFILE-FINANCE</b>
+                                    <p>
+                                        Vos coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule  adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                    </p>
+                                </div>
+                                <div class="col-md-10">
+                                    {{ form_start(edit_form) }}
+                                    <div class="row" style="margin-top: 20px;">{% set flashbag_notices = app.session.flashbag.get('notice') %}
+                                        {% if flashbag_notices is not empty %}
+
+                                        {% for notice in flashbag_notices %}
+                                        <div class="col-xs-12">  
+                                            <div class="alert alert-success">
+                                                <b style="color:white;">{{notice}}</b>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+
+                                        {% endif %}
+                                        <div class="col-md-9"> 
+                                            <label class="autre">Devise </label>
+
+                                            {{ form_widget(edit_form.devise) }}
+
+                                            <br>
+                                        </div>
+
+                                        <div class="col-xs-3" style="margin-bottom: 20px;">
+                                            <label class="autre">&nbsp; </label>
+                                            <div class="input-group">
+                                                <span></span>
+                                                {{ form_widget(edit_form.submit) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{ form_end(edit_form) }}
+                                    <b style="font-size: 20px;color:black"><i class="glyphicon glyphicon-user" style="font-size: 20px;color:black"></i>&nbsp;Méthode de paiement autorisée</b><br><br>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <b style="color:black">Comptes PayPal autorisés&nbsp;<i class="glyphicon glyphicon-remove-circle" style="color:red;"></i></b><br><br>
+                                            <img class="img-rounded thumbnail pull-left" src="{{ asset('img/card.png') }}">
+                                            <button class="btn btn-sm btn-primary pull-right">verifier</button>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <b style="color:black">Comptes PayPal autorisés&nbsp;<i class="glyphicon glyphicon-ok-circle" style="color:green;"></i></b><br><br>
+                                            <img class="img-rounded thumbnail pull-left" src="{{ asset('img/paypal.png') }}">
+                                            <button class="btn btn-sm btn-primary pull-right">verifier</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+           {% include '::layout/badge_profil.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

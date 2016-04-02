@@ -1,0 +1,27 @@
+<li class="list-group-item text-center">
+    <a href=""><b>Vous avez  {{nb }} Offre(s)</b></a>
+</li>
+{% for offre in offres %}
+<a href="{{ path('offre_show', { 'id': offre.id }) }}" >
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-2">
+                {% if offre.user.image %}
+                <img src="{{ asset(offre.user.image.webPath) }}" width="50" height="50" class="thumbnails" style="border:2px solid #3BAFDA;">
+                {% else %}
+                <img src="{{ asset('img/def.jpg') }}" width="50" height="50" class="thumbnails" style="border:2px solid #3BAFDA;">
+                {% endif %}
+
+
+
+            </div>
+            <div class="col-md-10">
+                <b>Budget : </b>{{ offre.budgetOffre }}<br>
+                <b>Nombre de jour :</b>{{ offre.dureeOffre }}<br>
+                <b>Description :</b>{{ offre.descriptionOffre [:70]}}
+            </div>
+        </div>
+    </li>
+</a>
+{% endfor %}
+

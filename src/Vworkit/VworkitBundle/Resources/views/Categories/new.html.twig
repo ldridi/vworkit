@@ -1,0 +1,52 @@
+
+{% extends('::layout/layout_admin.html.twig') %}
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                {% include '::layout/navigation_profil_admin.html.twig' %}
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+
+                            <h1>{{entity.nomCategories|upper }} 
+                                <a href="{{ path('admin_categorie_new') }}">
+                                    Ajouter nouvelle categorie&nbsp;|&nbsp;
+                                </a>
+                                
+                                <a href="{{ path('admin_categorie') }}">
+                                    Retour a la liste
+                                </a>
+                                
+                            </h1>
+                            {{form_start(form) }} 
+                            <div class="row">
+                                <div class="span3">
+                                    <img src="{{ asset('img/u.svg') }}" class="img-polaroid">
+                                </div>
+                                
+                                <div class="span6">
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Titre Categorie:</label>
+                                    {{ form_widget(form.nomCategories) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Description :</label>
+                                    {{ form_widget(form.descriptionCategories) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Role :</label>
+                                    {{ form_widget(form.roleCategories) }}
+                                     <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Image :</label>
+                                     {{ form_widget(form.image) }}</br>
+                                    {{ form_widget(form.submit) }}
+                                </div>
+                                
+                            </div>
+                            {{form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+                            
+                            
+                           

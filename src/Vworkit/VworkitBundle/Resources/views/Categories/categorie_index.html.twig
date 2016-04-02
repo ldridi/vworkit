@@ -1,0 +1,22 @@
+
+{% for categorie in categories %}
+<a href="{{path('categorieProjets',{'categorie' : categorie.nomCategories} ) }}" style="color:black;">
+    
+  <div class="col-lg3 col-md-3 col-sm-6  col-xs-6">
+      <div class="thumbnail">
+                <div class="caption">
+                    
+                    <p style="color:white;"><b>{{ categorie.nomCategories|upper }}</b></p>
+                    <h5>100 projets</h5>
+                    <p>
+                      <button class="btn btn-sm btn-default">Consulter</button>
+                    </p>
+                </div>
+                <img src="{{ asset(categorie.image.webPath) }}">
+            </div>
+  </div>
+
+</a>
+{% endfor %}
+
+            

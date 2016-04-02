@@ -1,0 +1,41 @@
+<div class="col-xs-6">    
+        <label class="autre"> Titre  </label>
+
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+            {{ form_widget(form.nomCertificat) }}
+        </a>
+        <br>
+    </div>
+
+    
+    <div class="col-xs-6">    
+        <label class="autre"> Site  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer le site du certificat">
+            {{ form_widget(form.siteCertificat) }}
+            
+        </a>
+        <br>
+    </div>
+    <div class="col-xs-6">    
+        <label class="autre"> Lien  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer le lien du certificat">
+            {{ form_widget(form.linkCertificat) }}
+        </a>
+        <br>
+    </div>
+    <div class="col-xs-6">    
+        <label class="autre"> Description  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Decrire le contexte du certificat">
+            {{ form_widget(form.descriptionCertificat) }}
+        </a>
+        <br>
+    </div>
+<div class="col-xs-12">    
+        <label class="autre"> Date d'obtension  </label>
+        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer la date d'obtention du certificat">
+            {{ form_widget(form.dateCertificat) }}
+        </a>
+        <br>
+    </div>
+<script type="text/javascript" src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/mainCertif.js') }}"></script>

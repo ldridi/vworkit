@@ -1,0 +1,30 @@
+plaisir:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Plaisir:index" }
+
+plaisir_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Plaisir:show" }
+
+plaisir_new:
+    path:     /new
+    defaults: { _controller: "UtilisateurBundle:Plaisir:new" }
+
+plaisir_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Plaisir:create" }
+    requirements: { _method: post }
+
+plaisir_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Plaisir:edit" }
+
+plaisir_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Plaisir:update" }
+    requirements: { _method: post|put }
+
+plaisir_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Plaisir:delete" }
+    requirements: { _method: post|delete }

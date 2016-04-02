@@ -1,0 +1,17 @@
+<div class="col-xs-12">    
+                                        <label class="autre"> Prestataire  </label>
+
+                                        <input type="text" disabled="disabled" class="input-sm form-control" value="à : {{entities.nomUser }} {{entities.prenomUser }}">
+
+                                        <br>
+                                    </div>
+                                    <div class="col-xs-12">    
+                                        <label class="autre"> Message à envoyer  </label>
+
+                                        {{ form_widget(form.texteMessage) }}
+
+                                        <br>
+                                    </div>
+                                    
+                                    <script type="text/javascript" src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/mainMessage.js') }}"></script>

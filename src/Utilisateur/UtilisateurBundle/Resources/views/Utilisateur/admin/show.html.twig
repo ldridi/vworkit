@@ -1,0 +1,161 @@
+
+
+{% extends('::layout/layout_admin.html.twig') %}
+
+{% block body -%}
+<div class="container">
+    <h1>Fiche de {{ entity.username }}</h1>
+    <div class="row">
+        <div class="span3">
+            {% if entity.image %}
+                <img src="{{ asset(entity.image.webPath) }}" class="img-circle img-responsive center-block"style="width:150px; height: 150px;border:3px solid white">
+                {% else %}
+                <img src="{{ asset('img/def.jpg') }}" class="img-circle img-responsive"style="width:100px; height: 100px;border:3px solid white">
+                {% endif %}
+        <ul style="list-style-type:none;">
+    <li>
+        <a href="{{ path('admin_users') }}">
+            Consulter toutes la liste
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_users_edit', { 'id': entity.id }) }}">
+            <button class="btn btn-sm btn-success">Modifer</button>
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+        </div>
+        <div class="span9">
+            <table class="record_properties" border="1" width="100%">
+        <tbody >
+            <tr>
+                <td style="background:#29A8D6;color:white;">Numéro</td>
+                <td style="background:white;color:black;">{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Pseudo</td>
+                <td style="background:white;color:black;">{{ entity.username }}</td>
+            </tr>
+            
+            <tr>
+                <td style="background:#29A8D6;color:white;">Email</td>
+                <td style="background:white;color:black;">{{ entity.email }}</td>
+            </tr>
+            
+            <tr>
+                <td style="background:#29A8D6;color:white;">Active</td>
+                <td style="background:white;color:black;">{{ entity.enabled }}</td>
+            </tr>
+            
+            
+            <tr>
+                <td style="background:#29A8D6;color:white;">Dérniere session</td>
+                <td style="background:white;color:black;">{{ entity.lastLogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Bloqué ?</td>
+                <td style="background:white;color:black;">{{ entity.locked }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte expiré</td>
+                <td style="background:white;color:black;">{{ entity.expired }}</td>
+            </tr>
+            
+            
+            
+            
+            <tr>
+                <td style="background:#29A8D6;color:white;">Date d'inscription</td>
+                <td style="background:white;color:black;">{{ entity.dateAjoutUser|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            
+            <tr>
+                <td style="background:#29A8D6;color:white;">Budget</td>
+                <td style="background:white;color:black;">{{ entity.budgetUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Code postale</td>
+                <td style="background:white;color:black;">{{ entity.codeUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Nom</td>
+                <td style="background:white;color:black;">{{ entity.nomUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Prenom</td>
+                <td style="background:white;color:black;">{{ entity.prenomUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Adresse</td>
+                <td style="background:white;color:black;">{{ entity.adresseUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Sexe</td>
+                <td style="background:white;color:black;">{{ entity.sexeUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Devise</td>
+                <td style="background:white;color:black;">{{ entity.deviseUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Description</td>
+                <td style="background:white;color:black;">{{ entity.descriptionUser[:70] }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Ville</td>
+                <td style="background:white;color:black;">{{ entity.villeUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Etat</td>
+                <td style="background:white;color:black;">{{ entity.etatUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Société</td>
+                <td style="background:white;color:black;">{{ entity.societeUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Telephone</td>
+                <td style="background:white;color:black;">{{ entity.telUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Telephone secondaire</td>
+                <td style="background:white;color:black;">{{ entity.telSecUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte facebook</td>
+                <td style="background:white;color:black;">{{ entity.facebookUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte Twitter</td>
+                <td style="background:white;color:black;">{{ entity.twitterUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte Youtube</td>
+                <td style="background:white;color:black;">{{ entity.youtubeUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte Google</td>
+                <td style="background:white;color:black;">{{ entity.googleplusUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Site web</td>
+                <td style="background:white;color:black;">{{ entity.siteUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte Github </td>
+                <td style="background:white;color:black;">{{ entity.githubUser }}</td>
+            </tr>
+            <tr>
+                <td style="background:#29A8D6;color:white;">Compte Linkedin</td>
+                <td style="background:white;color:black;">{{ entity.linkedinUser }}</td>
+            </tr>
+        </tbody>
+    </table>
+        </div>
+    </div>
+    
+
+        
+</div>
+{% endblock %}

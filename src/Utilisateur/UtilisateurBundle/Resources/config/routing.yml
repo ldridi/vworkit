@@ -1,0 +1,223 @@
+visite:
+    path:     /user/visite
+    defaults: { _controller: "UtilisateurBundle:Visite:index" }
+
+visiteDelete:
+    pattern: /deletevisite/{id}
+    defaults: { _controller: UtilisateurBundle:Visite:deleteVisite }
+
+favoris:
+    path:     /allfavoris
+    defaults: { _controller: "UtilisateurBundle:Favoris:index" }
+
+favorisUser:
+    pattern: /favoris/{id}
+    defaults: { _controller: UtilisateurBundle:Favoris:addFavoris }
+
+favorisDelete:
+    pattern: /deletefavoris/{id}
+    defaults: { _controller: UtilisateurBundle:Favoris:deleteFavoris }
+
+categorieUser:
+    pattern:  /alluser/categorie/{categorie}
+    defaults: { _controller: VworkitBundle:Categories:categorieUser }
+
+competenceUser:
+    pattern:  /alluser/categorie/{categorie}/competence/{competence}
+    defaults: { _controller: VworkitBundle:Competence:competenceUser }
+
+rechercheLocation:
+    pattern:  /recherche
+    defaults: { _controller: UtilisateurBundle:Utilisateur:rechercheLocation }
+
+userdesc:
+    pattern:  /anciennete/premiersuser
+    defaults: { _controller: UtilisateurBundle:Utilisateur:userdesc }
+
+userasc:
+    pattern:  /anciennete/derniersuser
+    defaults: { _controller: UtilisateurBundle:Utilisateur:userasc }
+
+rechercheZip:
+    pattern:  /recherchezip
+    defaults: { _controller: UtilisateurBundle:Utilisateur:rechercheZip }
+
+recup:
+    path:     /recup
+    defaults: { _controller: "UtilisateurBundle:Message:recup" }
+
+utilisateur:
+    path:     /alluser
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:index" }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+#fos_user_profile:
+    #resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    #prefix: /profile
+
+UtilisateurBundle_portfolio:
+    resource: "@UtilisateurBundle/Resources/config/routing/portfolio.yml"
+    prefix:   /portfolio
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profil
+
+utilisateur_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:show" }
+
+utilisateur_new:
+    path:     /new
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:new" }
+
+utilisateur_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:create" }
+    requirements: { _method: post }
+
+utilisateur_edit:
+    path:     /info
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:edit" }
+
+utilisateur_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:update" }
+    requirements: { _method: post|put }
+
+utilisateur_reseau:
+    path:     /reseau
+    defaults: { _controller: "UtilisateurBundle:reseauCompte:edit" }
+
+utilisateur_update_reseau:
+    path:     /{id}/reseau
+    defaults: { _controller: "UtilisateurBundle:reseauCompte:update" }
+    requirements: { _method: post|put }
+
+utilisateur_profil:
+    path:     /profil
+    defaults: { _controller: "UtilisateurBundle:Profile:edit" }
+
+utilisateur_update_profil:
+    path:     /{id}/profil
+    defaults: { _controller: "UtilisateurBundle:Profile:update" }
+    requirements: { _method: post|put }
+
+utilisateur_notification:
+    path:     /notification
+    defaults: { _controller: "UtilisateurBundle:notifCompte:edit" }
+
+utilisateur_update_notification:
+    path:     /{id}/notification
+    defaults: { _controller: "UtilisateurBundle:notifCompte:update" }
+    requirements: { _method: post|put }
+
+utilisateur_finance:
+    path:     /finance
+    defaults: { _controller: "UtilisateurBundle:financeCompte:edit" }
+
+utilisateur_update_finance:
+    path:     /{id}/finance
+    defaults: { _controller: "UtilisateurBundle:financeCompte:update" }
+    requirements: { _method: post|put }
+
+utilisateur_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Utilisateur:delete" }
+    requirements: { _method: post|delete }
+
+historique_show:
+    pattern:  /profil/historique
+    defaults: { _controller: UtilisateurBundle:Historique:Allhistorique }
+
+historique_delete:
+    path:     /profil/{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Historique:delete" }
+
+utilisateur_apropos:
+    path:     /apropos
+    defaults: { _controller: "UtilisateurBundle:Apropos:apropos" }
+
+UtilisateurBundle_emploi:
+    resource: "@UtilisateurBundle/Resources/config/routing/emploi.yml"
+    prefix:   /emploi
+    
+UtilisateurBundle_education:
+    resource: "@UtilisateurBundle/Resources/config/routing/education.yml"
+    prefix:   /education
+    
+UtilisateurBundle_plaisir:
+    resource: "@UtilisateurBundle/Resources/config/routing/plaisir.yml"
+    prefix:   /plaisir
+    
+UtilisateurBundle_langue:
+    resource: "@UtilisateurBundle/Resources/config/routing/langue.yml"
+    prefix:   /langue
+    
+UtilisateurBundle_certificat:
+    resource: "@UtilisateurBundle/Resources/config/routing/certificat.yml"
+    prefix:   /certificat
+
+UtilisateurBundle_recommandation:
+    resource: "@UtilisateurBundle/Resources/config/routing/recommandation.yml"
+    prefix:   /recommandation
+    
+UtilisateurBundle_message:
+    resource: "@UtilisateurBundle/Resources/config/routing/message.yml"
+    prefix:   /message
+
+UtilisateurBundle_reponse:
+    resource: "@UtilisateurBundle/Resources/config/routing/reponse.yml"
+    prefix:   /reponse
+    
+litige:
+    pattern:  /litige
+    defaults: { _controller: UtilisateurBundle:Litige:new }
+    
+litige_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Litige:create" }
+    requirements: { _method: post }
+    
+#users_admin
+admin_users:
+    path:     /admin/user
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:index" }
+
+admin_users_show:
+    path:     /admin/user/{id}/show
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:show" }
+
+admin_users_new:
+    path:     /admin/user/new
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:new" }
+
+admin_users_create:
+    path:     /admin/user/create
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:create" }
+    requirements: { _method: post }
+
+admin_users_edit:
+    path:     /admin/user/{id}/edit
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:edit" }
+
+admin_users_update:
+    path:     /admin/user/{id}/update
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:update" }
+    requirements: { _method: post|put }
+
+admin_users_delete:
+    path:     /admin/user/{id}/delete
+    defaults: { _controller: "UtilisateurBundle:UsersAdmin:delete" }
+    requirements: { _method: post|delete }
+    

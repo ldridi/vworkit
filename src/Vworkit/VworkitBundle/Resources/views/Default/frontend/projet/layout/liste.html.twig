@@ -1,0 +1,118 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        {% include '::layout/navigation_profil.html.twig' %}
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade  active in" id="home3">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <b style="font-size: 20px;">PROJETS-MES PROJETS</b>
+
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="row" style="margin-top: 20px;"> 
+                            {% if entities|length != 0 %}
+                                {% for entity in entities %}
+
+                                    
+                                        <div class="col-md-6">
+                                            <div class="panel panel-reverse" style="">
+                                                <div class="panel-heading">
+                                                    <p>
+                                                        <b><a href="{{ path('projet_show', { 'id': entity.id }) }}" style="color:black;"><i class="glyphicon glyphicon-tasks"></i>&nbsp;{{ entity.titreProjet }}</a></b>
+
+                                                        <b class="pull-right">
+
+
+                                                            {% if(entity.etat.id != 1) %}
+                                                                <span class="label label-info">{{ entity.etat.nomEtat }}</span>
+                                                            {% else %}
+                                                                <span class="label label-danger">{{ entity.etat.nomEtat }}</span>
+                                                            {% endif %}
+                                                             <a href="{{ path('projet_edit', { 'id': entity.id }) }}" ><button style="margin-left:10px;" class="btn btn-sm btn-primary pull-right"><i class="glyphicon glyphicon-pencil"></i>&nbsp;&nbsp;Modifier</button></a>
+                                                        </b>
+                                                    </p>
+
+                                                </div>
+                                                <div class="panel-body affiche_projet">
+                                                    <div class="row">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+
+
+
+                                                                <div class="col-md-12">
+
+                                                                    <b><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Description du projet</b></br></br>
+                                                                    {{ entity.descriptionProjet[:50]}} ...
+                                                                </div>
+                                                                
+                                                                
+                                                            </div>
+                                                        </div>
+                                                                <div class="col-md-12" style="margin-top: 10px;">
+                                                            <b><i class="glyphicon glyphicon-download-alt" style="color: black"></i>&nbsp;Compétences rechechées</b></br>
+                                                            {% for competences in entity.competence %}
+                                                                <span class="label label-primary">{{ competences.nomCompetence }}</span>&nbsp;
+
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-footer" style="background: white;">
+                                                    <p>
+                                                        <i class="glyphicon glyphicon-time"></i>&nbsp;{{ entity.dateAjoutProjet|date('Y-m-d') }} |
+                                                        B&nbsp;{{ entity.budget.nomBudget }} DNT &nbsp; |
+                                                        <i class="glyphicon glyphicon-bullhorn"></i>&nbsp;132 Offres
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    
+
+
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-12">
+                                        <div class="alert alert-info">
+                                            <b style="color:white;">Vous n'avez pas de projets pour le moment</b>
+                                            <a href="{{ path('projet_new') }}"><button class="pull-right btn btn-sm btn-info" style="margin-top:-5px;">Voulez vous creer ?</button></a>
+                                        </div>
+                                    </div>     
+
+                                </div>
+                                        </div>
+                            {% endif %}
+                            
+                        </div>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% include '::layout/badge_profil.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

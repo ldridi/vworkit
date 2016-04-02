@@ -1,0 +1,30 @@
+emploi:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Emploi:index" }
+
+emploi_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Emploi:show" }
+
+emploi_new:
+    path:     /new
+    defaults: { _controller: "UtilisateurBundle:Emploi:new" }
+
+emploi_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Emploi:create" }
+    requirements: { _method: post }
+
+emploi_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Emploi:edit" }
+
+emploi_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Emploi:update" }
+    requirements: { _method: post|put }
+
+emploi_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Emploi:delete" }
+    requirements: { _method: post|delete }

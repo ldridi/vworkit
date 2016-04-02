@@ -1,0 +1,67 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body %}
+
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:50px;">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;padding-left:20px;">
+                            <form action="{{path('ajouter') }}" method="POST">
+                            {{form(form)}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <img class="img-rounded center-block thumbnail" src="{{ asset('img/hayfa.jpg') }}" style="width:60px;">
+                                    <div class="caption text-center">
+                                        <h6><b>Dridi Lotfi</b></h6>
+                                        <address>
+                                            <i class="glyphicon glyphicon-home"></i>&nbsp;21 Rue hedi chcker<br>
+                                            Borj el amri, manouba 1142<br>
+                                            <i class="glyphicon glyphicon-phone"></i>&nbsp;Tel: (+216) 55 731 352
+                                        </address>
+                                        <p>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                            <i class="glyphicon glyphicon-star" style="color:orange;"></i>
+                                        </p> 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                       <span class="label label-danger">Fermé</span>
+
+                                    <p style="padding-top:5px;">
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Sit</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>&nbsp;
+                                    <div class="blank"></div>
+                                    <span class="label label-primary">Site e-commerce</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

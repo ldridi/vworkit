@@ -1,0 +1,19 @@
+{% block body %}
+    <div class="col-md-3 hidden-sm hidden-xs">
+    	<button class="btn-md btn btn-primary btn-block" style="margin-bottom:20px;">Nouveau Message</button>
+        <div class="list-group">
+            
+            	
+                <a href="{{path('listemessage') }}" class="list-group-item"><i class="glyphicon glyphicon-import"></i>&nbsp;Boite réception</a>
+            
+                <a href="{{path('listeenvoie') }}" class="list-group-item "><i class="glyphicon glyphicon-export"></i>&nbsp;Boite d'envoi</a>
+            
+                <a href="{{path('listearchive') }}" class="list-group-item "><i class="glyphicon glyphicon-user"></i>&nbsp;Archive</a>
+           
+               
+                
+            </a>
+            
+        </div>
+    </div>
+{%endblock %}

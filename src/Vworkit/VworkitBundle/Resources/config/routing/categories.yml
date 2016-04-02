@@ -1,0 +1,30 @@
+admin_categorie:
+    path:     /admin/categorie
+    defaults: { _controller: "VworkitBundle:Categories:index" }
+
+admin_categorie_show:
+    path:     /admin/categorie/{id}/show
+    defaults: { _controller: "VworkitBundle:Categories:show" }
+
+admin_categorie_new:
+    path:     /admin/categorie/new
+    defaults: { _controller: "VworkitBundle:Categories:new" }
+
+admin_categorie_create:
+    path:     /admin/categorie/create
+    defaults: { _controller: "VworkitBundle:Categories:create" }
+    requirements: { _method: post }
+
+admin_categorie_edit:
+    path:     /admin/categorie/{id}/edit
+    defaults: { _controller: "VworkitBundle:Categories:edit" }
+
+admin_categorie_update:
+    path:     /admin/categorie/{id}/update
+    defaults: { _controller: "VworkitBundle:Categories:update" }
+    requirements: { _method: post|put }
+
+admin_categorie_delete:
+    path:     /admin/categorie/{id}/delete
+    defaults: { _controller: "VworkitBundle:Categories:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,77 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        {% include '::layout/navigation_profil.html.twig' %}
+                        <div id="myTabContent" class="tab-content">
+
+
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <b style="font-size: 20px;">PROFILE-CHANGEMENT MOT DE PASSE</b>
+                                    <p>
+                                        Vos coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule  adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                    </p>
+                                </div>
+                                <div class="col-md-10">
+                                    <form action="" method="POST" {{ form_enctype(form) }}>
+                                        {{ form_start(form) }}
+                                        <div class="row">
+                                            <div class="col-xs-12"> 
+
+                                                <label class="autre">Mot de passe actuel  <font color="red">*</font></label>
+
+                                                {{ form_widget(form.pass) }}
+
+                                                <br>
+                                            </div>
+                                            <div class="col-xs-6"> 
+                                                <label class="autre">Nouveau mot de passe  <font color="red">*</font></label>
+
+                                                {{ form_widget(form.plainPassword.first) }}
+
+                                                <br>
+                                            </div>
+                                            <div class="col-xs-6"> 
+                                                <label class="autre">Entrer à nouveau le mot de passe  <font color="red">*</font></label>
+
+                                                {{ form_widget(form.plainPassword.second) }}
+
+                                                <br>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div class="col-xs-12">
+                                                {{ form_widget(form.sauvegarde) }}
+                                            </div>
+
+                                        </div>
+                                        {{ form_end(form) }}
+                                    </form>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include '::layout/badge_profil.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+
+
+
+<li class="list-group-item text-center">
+                <a href=""><b>Boite de reception ({{nb}})</b></a>
+            </li>
+{% for message in messages %}
+   
+    <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        {% if message.from.image %}
+                                                    <img src="{{ asset(message.from.image.webPath) }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% else %}
+                                                    <img src="{{ asset('img/def.jpg') }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% endif %}
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <b>Le {{ message.dateajoutMessage|date('d-m-Y') }} à {{ message.dateajoutMessage|date('H:i:s') }}</b><br>
+                            {{message.texteMessage[:70]}}...
+                        </p>
+                    </div>
+                </div>
+          </li>
+  
+{% endfor %}
+

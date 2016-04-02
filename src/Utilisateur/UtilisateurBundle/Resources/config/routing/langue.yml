@@ -1,0 +1,30 @@
+langue:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Langue:index" }
+
+langue_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Langue:show" }
+
+langue_new:
+    path:     /new
+    defaults: { _controller: "UtilisateurBundle:Langue:new" }
+
+langue_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Langue:create" }
+    requirements: { _method: post }
+
+langue_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Langue:edit" }
+
+langue_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Langue:update" }
+    requirements: { _method: post|put }
+
+langue_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Langue:delete" }
+    requirements: { _method: post|delete }

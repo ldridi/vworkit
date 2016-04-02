@@ -1,0 +1,94 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+           <div class="espace_av">
+            <div class="row">
+                <div class="col-md-3">
+                    {% render(controller('VworkitBundle:Projet:recherche')) %}
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par Reunion</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                {% render(controller('VworkitBundle:Reunion:reunion')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li class="dropdown" style="margin-top:3px;">
+                            <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par Progression</b>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu" role="menu">
+                                
+                                {% render(controller('VworkitBundle:Progression:progression')) %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+            <div class="row">
+                <div id="commenttache" style="display:none;">
+                    <div class="container">
+                        <div class="row">
+                            {% render(controller('VworkitBundle:CommentaireTache:new')) %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding:10px;">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-import" style="font-size: 20px;color: black;margin-bottom: 20px;"></i>&nbsp;Tache Du projet</b>
+                                    <!-- Modal -->
+                                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content" style="padding:20px 30px 20px 30px;">
+                                            {% render(controller('VworkitBundle:tache:new')) %}
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <li class="pull-left" style="margin-top:3px;list-style-type: none">
+                                        <button class="btn btn-sm btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Ajouter nouvelle tache</button>
+                                            Label :
+                                            <i class="glyphicon glyphicon-stop" style="color:red;"></i>&nbsp;Important&nbsp;
+                                            <i class="glyphicon glyphicon-stop" style="color:green;"></i>&nbsp;Pas Important&nbsp;
+                                    </li>
+                                </div>
+                                
+                            </div>
+                            <div class="row" style="margin-top:40px;"  id="tachetache">
+                                
+                                
+                                    
+                                
+                                
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+
+<script type="text/javascript" src="{{ asset('js/jquery-1.9.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/affichemestache.js') }}"></script>
+
+
+{% endblock %}

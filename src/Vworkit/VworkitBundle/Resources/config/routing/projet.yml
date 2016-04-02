@@ -1,0 +1,101 @@
+projet:
+    path:     /
+    defaults: { _controller: "VworkitBundle:Projet:index" }
+
+projet:
+    path:     /
+    defaults: { _controller: "VworkitBundle:Projet:index" }
+
+projet_affiche:
+    path:     /lister
+    defaults: { _controller: "VworkitBundle:Projet:lister" }
+
+projet_show:
+    path:     /{id}/voir
+    defaults: { _controller: "VworkitBundle:Projet:voir" }
+
+projet_new:
+    path:     /deposer
+    defaults: { _controller: "VworkitBundle:Projet:deposer" }
+
+projet_create:
+    path:     /create
+    defaults: { _controller: "VworkitBundle:Projet:create" }
+    requirements: { _method: post }
+
+projet_edit:
+    path:     /{id}/modifier
+    defaults: { _controller: "VworkitBundle:Projet:modifier" }
+
+projet_update:
+    path:     /{id}/update
+    defaults: { _controller: "VworkitBundle:Projet:update" }
+    requirements: { _method: post|put }
+
+projet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VworkitBundle:Projet:delete" }
+    requirements: { _method: post|delete }
+
+rechercheProjets:
+    pattern:  /recherche
+    defaults: { _controller: VworkitBundle:Projet:rechercheTraitement }
+
+categorieProjets:
+    pattern:  /categorie/{categorie}
+    defaults: { _controller: VworkitBundle:Categories:categorie }
+
+
+
+etatProjets:
+    pattern:  /etat/{etat}
+    defaults: { _controller: VworkitBundle:Etat:etats }
+
+budgetProjets:
+    pattern:  /budget/{budget}
+    defaults: { _controller: VworkitBundle:Budget:budgets }
+
+deviseProjets:
+    pattern:  /devise/{devise}
+    defaults: { _controller: VworkitBundle:Devise:devises }
+
+categorieIndexProjets:
+    pattern:  /categorie/{categorie}
+    defaults: { _controller: VworkitBundle:Categories:categorie }
+
+
+
+admin_projet:
+    path:     /admin_projet
+    defaults: { _controller: "VworkitBundle:ProjetAdmin:index" }
+
+admin_projet_show:
+    path:     /admin_projet/{id}/show
+    defaults: { _controller: "AdministrationBundle:ProjetAdmin:show" }
+
+admin_projet_new:
+    path:     /new
+    defaults: { _controller: "AdministrationBundle:Projet:new" }
+
+admin_projet_create:
+    path:     /create
+    defaults: { _controller: "AdministrationBundle:Projet:create" }
+    requirements: { _method: post }
+
+admin_projet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AdministrationBundle:Projet:edit" }
+
+admin_projet_update:
+    path:     /{id}/update
+    defaults: { _controller: "AdministrationBundle:Projet:update" }
+    requirements: { _method: post|put }
+
+admin_projet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AdministrationBundle:Projet:delete" }
+    requirements: { _method: post|delete }
+
+competenceProjets:
+    pattern:  /categorie/{categorie}/competence/{competence}
+    defaults: { _controller: VworkitBundle:Competence:competence }

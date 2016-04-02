@@ -1,0 +1,168 @@
+{% block body %}
+    <div class="message" style="display:none;">
+        <ul class="list-group">
+            
+          {% render(controller('UtilisateurBundle:Message:message')) %}
+          
+          <li class="list-group-item text-center">
+                <a href="{{path('listemessage') }}"><b>Afficher tous</b></a>
+          </li>
+        </ul>
+    </div>
+    <div class="alerte" style="display:none;">
+        <ul class="list-group">
+            <li class="list-group-item text-center">
+                <a href=""><b>Notification</b></a>
+          </li>
+          <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{ asset('img/anas.jpg') }}" width="50" class="thumbnails">
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression
+                        </p>
+                    </div>
+                </div>
+          </li>
+          <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{ asset('img/anas.jpg') }}" width="50">
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression
+                        </p>
+                    </div>
+                </div>
+          </li>
+          <li class="list-group-item text-center">
+                <a href=""><b>Afficher tous</b></a>
+          </li>
+        </ul>
+    </div>
+    <div class="recrutement" style="display:none;">
+        <ul class="list-group">
+            
+          {% render(controller('VworkitBundle:Offre:offre')) %}
+          
+          <li class="list-group-item text-center">
+                <a href=""><b>Afficher tous</b></a>
+          </li>
+        </ul>
+    </div>
+    <div class="visite" style="display:none;">
+        <ul class="list-group">
+            <li class="list-group-item text-center">
+                <a href=""><b>Visites</b></a>
+          </li>
+          <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{ asset('img/anas.jpg') }}" width="50" class="thumbnails">
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression
+                        </p>
+                    </div>
+                </div>
+          </li>
+          <li class="list-group-item">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="{{ asset('img/anas.jpg') }}" width="50">
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression
+                        </p>
+                    </div>
+                </div>
+          </li>
+          <li class="list-group-item text-center">
+                <a href=""><b>Afficher tous</b></a>
+          </li>
+        </ul>
+    </div>
+    <div class="container-full">
+        <nav class="navbar navbar-default header_user">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-star"></i>&nbsp;Passer à un membre Pro</button> <span class="sr-only">(current)</span></a></li>
+
+
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        <!--<li style="margin-top:5px;"><a href="#" style="color:white;"><b>Annonces</b></a></li>
+                        <li style="margin-top:5px;"><a href="#" style="color:white;"><b>Blog</b></a></li>
+                        <li style="margin-top:5px;"><a href="#" style="color:white;"><b>Forum</b></a></li>-->
+                        
+                        
+                        <li class="dropdown" style="margin-top:3px;">
+                                <a href="#" style="color:white;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <b><i class="glyphicon glyphicon-bookmark"></i>&nbsp;Portfolio</b>
+                                     <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li style="margin-top:5px;"><a href="{{ path('portfolio_new') }}"><b><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Ajouter un portfolio</b></a></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('portfolio_affiche') }}" ><b><i class="glyphicon glyphicon-tag"></i>&nbsp;Consulter mon portfolio </b></a></li>
+                                    
+                                    
+                                </ul>
+                        </li>
+                        <li class="dropdown" style="margin-top:3px;">
+                                <a href="#" style="color:white;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <b><i class="glyphicon glyphicon-list"></i>&nbsp;Projet</b>
+                                     <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li style="margin-top:5px;"><a href="{{ path('projet_affiche') }}" ><b><i class="glyphicon glyphicon-file"></i>&nbsp;Mes projets</b></a></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('projet_affiche') }}"><b><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Mes Projets Remportés </b></a></li>
+                                    
+                                    
+                                </ul>
+                        </li>
+                        <li style="margin-top:5px;"><a href="{{ path('offre_affiche') }}" style="color:white;"><b><i class="glyphicon glyphicon-check"></i>&nbsp;Offres</b></a></li>
+                       <!-- <li class="dropdown" style="margin-top:3px;">
+                                <a href="#" style="color:white;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <b><i class="glyphicon glyphicon-ok"></i>&nbsp;Taches</b>
+                                     <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li style="margin-top:5px;"><a href="{{ path('mestaches') }}" ><b><i class="glyphicon glyphicon-file"></i>&nbsp;Mes taches</b></a></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('mestachesassocie') }}"><b><i class="glyphicon glyphicon-download-alt"></i>&nbsp;Taches Associés </b></a></li>
+                                    <li class="divider"></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('tache') }}"><b><i class="glyphicon glyphicon-ok"></i>&nbsp;Toutes les taches</b></a></li>
+                                </ul>
+                        </li>-->
+                        <!--<li style="margin-top:5px;"><a class="visit" style="color:black;"><b><i class="glyphicon glyphicon-eye-open"></i><span class="badge badge-danger" style="position: absolute;margin-top: -10px;">3</span></b></a></li>-->
+                        <li style="margin-top:5px;"><a href="{{ path('favoris') }}" style="color:white;"><b><i class="glyphicon glyphicon-heart"></i>&nbsp;Favoris<span class="badge badge-danger" style="position: absolute;margin-top: -10px;">3</span></b></a></li>
+                         <li style="margin-top:5px;"><a href="{{ path('visite') }}" style="color:white;"><b><i class="glyphicon glyphicon-eye-open"></i>&nbsp;Visite<span class="badge badge-danger" style="position: absolute;margin-top: -10px;">3</span></b></a></li>
+
+
+                        <li style="margin-top:5px;"><a class="recru" style="color:white;"><b><i class="glyphicon glyphicon-bullhorn"></i>&nbsp;Notification<span class="badge badge-danger" style="position: absolute;margin-top: -10px;">0</span></b></a></li>
+                        <!--<li style="margin-top:5px;"><a class="notif" style="color:black;"><b><i class="glyphicon glyphicon-bell"></i><span class="badge badge-danger" style="position: absolute;margin-top: -10px;">3</span></b></a></li>-->
+                        <li style="margin-top:5px;"><a class="msg" style="color:white;"><b><i class="glyphicon glyphicon-envelope"></i>&nbsp;Message<span class="badge badge-danger" style="position: absolute;margin-top: -10px;" id="nbrmsg">1</span></b></a></li>
+
+
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+
+{% for budget in budgets %}
+   
+    <li style="margin-top:5px;"><a href="{{path('budgetProjets',{'budget' : budget.id} ) }}" ><b><i class="glyphicon glyphicon-file"></i>&nbsp;{{ budget.nomBudget }}</b></a></li>
+{% endfor %}
+

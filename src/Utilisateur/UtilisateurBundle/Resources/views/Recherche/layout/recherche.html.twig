@@ -1,0 +1,14 @@
+<form action="{{ path('rechercheLocation') }}" method="POST">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-search search-only">
+                <i class="search-icon glyphicon glyphicon-globe" style="color:black;" ></i>
+                {{ form(form.location) }}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-send"></i></button>
+        </div>
+    </div>
+    
+</form>

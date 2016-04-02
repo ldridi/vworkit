@@ -1,0 +1,124 @@
+<?php
+
+namespace Utilisateur\UtilisateurBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Favoris
+ *
+ * @ORM\Table("Favoris")
+ * @ORM\Entity(repositoryClass="Utilisateur\UtilisateurBundle\Repository\FavorisRepository")
+ */
+class Favoris
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\Utilisateur", cascade={"persist"})
+     * @ORM\joinColumn(nullable=false)
+     */
+    private $from;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateajoutfavoris", type="datetime")
+     */
+    private $dateajoutfavoris;
+
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\Utilisateur", cascade={"persist"})
+     * @ORM\joinColumn(nullable=false)
+     */
+    private $to;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateajoutfavoris
+     *
+     * @param \DateTime $dateajoutfavoris
+     * @return Favoris
+     */
+    public function setDateajoutfavoris($dateajoutfavoris)
+    {
+        $this->dateajoutfavoris = $dateajoutfavoris;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateajoutfavoris
+     *
+     * @return \DateTime 
+     */
+    public function getDateajoutfavoris()
+    {
+        return $this->dateajoutfavoris;
+    }
+
+    
+
+    /**
+     * Set from
+     *
+     * @param \Utilisateur\UtilisateurBundle\Entity\Utilisateur $from
+     * @return Favoris
+     */
+    public function setFrom(\Utilisateur\UtilisateurBundle\Entity\Utilisateur $from)
+    {
+        $this->from = $from;
+    
+        return $this;
+    }
+
+    /**
+     * Get from
+     *
+     * @return \Utilisateur\UtilisateurBundle\Entity\Utilisateur 
+     */
+    public function getFrom()
+    {
+        return $this->from;
+    }
+
+    /**
+     * Set to
+     *
+     * @param \Utilisateur\UtilisateurBundle\Entity\Utilisateur $to
+     * @return Favoris
+     */
+    public function setTo(\Utilisateur\UtilisateurBundle\Entity\Utilisateur $to)
+    {
+        $this->to = $to;
+    
+        return $this;
+    }
+
+    /**
+     * Get to
+     *
+     * @return \Utilisateur\UtilisateurBundle\Entity\Utilisateur 
+     */
+    public function getTo()
+    {
+        return $this->to;
+    }
+}

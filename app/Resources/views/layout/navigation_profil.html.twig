@@ -1,0 +1,15 @@
+<ul class="nav nav-tabs">
+    {% if (app.request.attributes.get('_route') =='profil') %}
+    <li class="active"><a href="{{path('utilisateur_profil') }}" ><center><i class="glyphicon glyphicon-user " style="font-size: 20px;"></i>        </center></a></li>
+    {% else %}
+    <li><a href="{{path('utilisateur_profil') }}" ><center><i class="glyphicon glyphicon-user " style="font-size: 20px;"></i>       <br>Informations </center></a></li>
+    {% endif %}
+    <li><a href="{{path('utilisateur_apropos') }}"><center><i class="glyphicon glyphicon-briefcase " style="font-size: 20px;"></i><br>Experiences</center></a></li>
+    <li><a href="{{path('info') }}"><center><i class="glyphicon glyphicon-align-left " style="font-size: 20px;"></i><br>Parametres</center></a></li>
+    <li><a href="{{path('parametre') }}"><center><i class="glyphicon glyphicon-cog" style="font-size: 20px;"></i><br>Mot de passe</center></a></li>
+    <li><a href="{{path('finance') }}"><center><i class="glyphicon glyphicon-briefcase" style="font-size: 20px;"></i><br>Finance</center></a></li>
+    <li><a href="{{path('utilisateur_reseau') }}"><center><i class="glyphicon glyphicon-signal" style="font-size: 20px;"></i><br>Reseaux</center></a></li>
+    <li><a href="{{path('utilisateur_notification') }}"><center><i class="glyphicon glyphicon-bell" style="font-size: 20px;"></i><br>Notification</center></a></li>
+    
+    
+ </ul>

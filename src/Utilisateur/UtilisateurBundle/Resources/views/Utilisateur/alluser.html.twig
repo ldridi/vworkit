@@ -1,0 +1,182 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+
+
+
+
+    <div class="projet">
+        {% if is_granted("ROLE_USER") %}
+        {% include '::layout/header_user.html.twig' %}
+        
+        
+        {% endif %}
+        <div class="container">
+            <div class="espace_av">
+                <div class="row">
+                    <div class="col-md-3">
+                        {% render(controller('VworkitBundle:Projet:recherche')) %}
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="dropdown pull-right" style="margin-top:3px;">
+                                    <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par budget</b>
+                                         <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        {% render(controller('VworkitBundle:Budget:budget')) %}
+                                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="dropdown pull-right" style="margin-top:3px;">
+                                    <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                        <b><i class="glyphicon glyphicon-search"></i>&nbsp;Recherche par disponibilté</b>
+                                         <b class="caret"></b></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        {% render(controller('VworkitBundle:Etat:etat')) %}
+                                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                        <li class="dropdown pull-right" style="margin-top:3px;">
+                                <a href="#" style="color:black;margin-top:2px;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <b ><i class="glyphicon glyphicon-search"></i>&nbsp;Par Ancienneté</b>
+                                     <b class="caret"></b></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li style="margin-top:5px;"><a href="{{ path('userasc') }}" ><b><i class="glyphicon glyphicon-arrow-up"></i>&nbsp;Premiers inscrits</b></a></li>
+                                    <li style="margin-top:5px;"><a href="{{ path('userdesc') }}"><b><i class="glyphicon glyphicon-arrow-down"></i>&nbsp;Derniers inscrits </b></a></li>
+                                    
+                                </ul>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-lg-12">
+                    
+                    <div class="row">
+                        <div class="col-md-3">
+                            {% include('::layout/navigation_gauche_user.html.twig') %}
+                            
+                            <ul class="list-group">
+                                <li><a href="#" class="list-group-item"><b>Recherche par location</b></a></li>
+                                <li id="affichepays"class="list-group-item" style="cursor:pointer;"><b>Par pays</b><i class="glyphicon glyphicon-plus-sign pull-right" style="color:#29A8D6;cursor:pointer;" ></i></li>
+                                <li class="list-group-item" style="display:none;" id="pays">{% render(controller('UtilisateurBundle:Utilisateur:location')) %}</li>
+                                <li id="affichezip" style="cursor:pointer;"class="list-group-item"><b>Par Code postale</b><i class="glyphicon glyphicon-plus-sign pull-right" style="color:#29A8D6;cursor:pointer;" ></i></li>
+                                <li class="list-group-item" style="display:none;" id="zip">{% render(controller('UtilisateurBundle:Utilisateur:zip')) %}</li>
+                            </ul>
+                        </div> 
+                        
+                        <div class="col-md-9 pull-right">
+                            <div class="row">
+                        {% set test = ['utilisateur','rechercheLocation','rechercheZip','userdesc','userasc'] %}
+                        {% if(app.request.attributes.get('_route') not in test)%}  
+                        {% if competences|length != 0 %}
+                            {% for competence in competences %}
+                            <div class="col-md-3">
+                                <a href="{{path('competenceUser',{'competence' : competence.nomCompetence , 'categorie':competence.categorie.nomCategories} ) }}">
+                                    <div class="well well-sm" style="background: #3BAFDA;color:white;">
+                                        {{ competence.nomCompetence }}<span class="badge badge-default pull-right">42</span>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="col-md-12">
+                                <div class="alert alert-info" style="color:white;font-weight: bold;">Aucune compétence pour cette catégorie</div>
+                            </div>
+                        {% endif %}
+                        {% endif %} 
+                        </div>
+                            <div class="row">
+                        {% if entities|length != 0 %}
+                        {% for entity in entities %}
+                          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">  
+                        <a href="{{ path('utilisateur_show', { 'id': entity.id }) }}" style="color:black;font-weight: normal;">
+                            <div class="card">
+                                <canvas class="header-bg" width="250" height="70" id="header-blur"></canvas>
+                                <div class="avatar">
+                                   {% if entity.image %}
+                                                <img src="{{ asset(entity.image.webPath) }}" >
+                                                {% else %}
+                                                <img src="{{ asset('img/def.jpg') }}" >
+                                                {% endif %}
+                                </div>
+                                <div class="content">
+                                    <b>{{ entity.username }}</b>
+                                    <p><b>{{ entity.titreUser }}</b><br>
+                                       Membre depuis&nbsp;{{ entity.dateAjoutUser|date('Y-m-d') }}</p>
+                                    <p><a href="{{ path('utilisateur_show', { 'id': entity.id }) }}" class="btn btn-primary btn-sm" role="button">Consulter Profil</a>
+
+                                    {% if is_granted("ROLE_USER") %}
+                                    <a href="{{ path('favorisUser', {'id': entity.id }) }}" class="btn btn-danger btn-sm " role="button">Ajouter au favoris</a>
+                                    {% else %}
+                                    <a class="btn btn-danger btn-sm " role="button" title="Vous devez connecter">Ajouter au favoris</a>
+
+                                    {% endif %}
+                                     </p>
+                                    
+                                </div>
+                            </div>
+                            </a>
+                    </div>
+            
+                      
+                           
+                        {% endfor %}
+                        {% else %}
+                        </div>
+                        <div class="alert alert-info">
+                        <b style="color:white;">Aucun user trouvé ! Veuillez lancer une autre recherche</b>
+                        </div>
+                         </div>
+                        
+                        {% endif %}
+                    </div>
+                    <div class="row" style="margin-top:20px;margin-bottom:20px;">
+                        <div class="col-md-12 ">
+                            <div class="navigation">
+                                {{ knp_pagination_render(entities) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!--<div class="col-lg-3" style="position: fixed;right: 0;">
+                    <div class="list-group">
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                     <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">List group item heading</h4>
+                        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                     </a>
+                  </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

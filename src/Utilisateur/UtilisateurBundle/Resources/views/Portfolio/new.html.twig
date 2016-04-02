@@ -1,0 +1,83 @@
+{% extends '::layout/layout.html.twig' %}
+{% block body -%}
+<div class="projet">
+    {% if is_granted("ROLE_USER") %}
+    {% include '::layout/header_user.html.twig' %}
+    {% endif %}
+    <div class="container" style="margin-bottom:50px;margin-top:0px;">
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="panel">
+                    <div class="tabbable tabs-left clearfix">
+                        {% include '::layout/navigation_profil.html.twig' %}
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade  active in" id="home3">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <b style="font-size: 20px;">PROFILE-A PROPOS</b>
+
+                                    </div>
+                                    <div class="col-md-10">
+                                        {{ form_start(form) }}
+                            <div class="row" style="margin-top: 20px;">
+                                {% set flashbag_notices = app.session.flashbag.get('notice') %}
+                                    {% if flashbag_notices is not empty %}
+                                        
+                                            {% for notice in flashbag_notices %}
+                                            <div class="col-xs-12">  
+                                                <div class="alert alert-success">
+                                                    <b style="color:white;">{{notice}}</b>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                       
+                                    {% endif %}
+
+
+                                <div class="col-xs-6">    
+                                    <label class="autre"> Titre  </label>
+                                    
+                                        <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+                                            {{ form_widget(form.titrePortfolio) }}
+                                        </a>
+                                    <br>
+                                </div>
+                                <div class="col-xs-6">    
+                                    <label class="autre"> Image  </label>
+                                    <a data-placement="top" data-toggle="tooltip" data-original-title="Entrer votre nom">
+                                        {{ form_widget(form.image) }}
+                                    </a>
+                                    <br>
+                                </div>
+                                <div class="col-xs-12">    
+                                    <label class="autre"> Description  </label>
+                                    
+                                        {{ form_widget(form.descriptionPortfolio) }}
+                                    
+                                    <br>
+                                </div>
+                                
+                                <div class="col-xs-12" style="margin-bottom: 20px;">
+                                    {{ form_widget(form.submit) }}
+                                </div>
+                            </div>
+
+                            {{ form_end(form) }}
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include '::layout/badge_profil.html.twig' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

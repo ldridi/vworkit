@@ -1,0 +1,317 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="projet"  style="margin-top:-50px;">
+    {% include '::layout/header_user.html.twig' %}
+    <div class="container" style="margin-bottom:20px;">
+        <div class="row">
+            {% include '::layout/navigation_profil.html.twig' %}
+            {% if section =='info' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            {{ form(form) }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='compte' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            {{ form(form) }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='notification' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            notificatin
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='supprimer' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            supprimer
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- 
+            {% if section =='chaine' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            chaine
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='evenement' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            evenement
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='alerte' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            alerte
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='abonnement' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            abonnement
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='facture' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            facture
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='carte' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            carte
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='litige' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            litige
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='stat' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            stat
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='widget' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            widget
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='verification' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            verification
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section =='supprimer' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            supprimer
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            -->
+            {% if section =='examen' %}
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4 style="margin-top:-3px;">Bienvenue au labo de compétences</h4>
+                            <p>
+                                Clients review your skills when awarding projects. Take these basic skills tests to define your credentials and get awarded more jobs. When you complete a test your profile and bids will showcase a Skills Lab Badge.
+                                Clients review your skills when awarding projects. Take these basic skills tests to define your credentials and get awarded more jobs. When you complete a test your profile and bids will showcase a Skills Lab Badge.
+                            </p>
+                            <button class="btn btn-sm btn-primary">Commencer les tests de votre choix !</button>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="{{ asset('img/cerveau.jpg') }}" class="img-rounded  img-responsive">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:50px;">
+                        <div class="col-md-8" style="margin-bottom:5px;">
+                            <select name="selecter_basic" class="selecter_1 form-control input-sm">
+                                <option value="1">Rechercher par categorie</option>
+                                <optgroup label="Group One">
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </optgroup>
+                                <optgroup label="Group One">
+                                    <option value="4">Four</option>
+                                    <option value="5">Five</option>
+                                    <option value="6">Six</option>
+                                    <option value="7">Seven</option>
+                                </optgroup>
+                                <optgroup label="Group Three">
+                                    <option value="8">Eight</option>
+                                    <option value="9">Nine</option>
+                                    <option value="10">Ten</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom:5px;">
+                            <div class="form-search search-only">
+                                <i class="search-icon glyphicon glyphicon-search" ></i> 
+                                <input class="form-control input-sm" placeholder="Entrer mot clé">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:30px;">
+                        <div class="col-md-4">
+                            <div class="well">
+                                <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                <ul class="list-group">
+                                    <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                    <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                    <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                </ul>
+                                <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                <ul class="list-group">
+                                    <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                    <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                    <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                </ul>
+                                <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                <ul class="list-group">
+                                    <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                    <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                    <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                </ul>
+                                <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <img src="{{ asset('icones/html.png') }}" class="img-rounded center-block thumbnail">
+                                <ul class="list-group">
+                                    <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                    <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                    <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                </ul>
+                                <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <img src="{{ asset('icones/js.png') }}" class="img-rounded center-block thumbnail">
+                                <ul class="list-group">
+                                    <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                    <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                    <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                </ul>
+                                <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="well">
+                                <img src="{{ asset('icones/css.png') }}" class="img-rounded center-block thumbnail">
+                                <ul class="list-group">
+                                    <li class="list-group-item text-center"><b>Questionnaire à choix multiples 40</b></li>
+                                    <li class="list-group-item text-center"><b>durée de l'examen 15 minutes</b></li>
+                                    <li class="list-group-item text-center"><b>Une note de 75% doit être atteinte pour réussir l'examen</b></li>
+                                </ul>
+                                <button class="btn btn-sm btn-primary center-block">Commencer le test !</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            {% endif %}
+            
+                <div class="col-md-9">
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                    <h4 style="margin-top:-3px;">Voyez qui vous connaissez déjà sur Vworkit.com</h4>
+                    <div class="row">
+                        {% for i in 1..6 %}
+                            <div class="col-md-2">
+                                <img src="{{ asset('img/lotfi.jpg') }}" class="thumbnail img-responsive">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p style="font-size:15px;">
+                                <b>Commencez par rechercher vos contacts e-mails</b>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-facebook">
+                                    <i class="fa fa-facebook"></i> Inviter avec facebook
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-google-plus">
+                                    <i class="fa fa-google-plus"></i> Inviter avec Google+
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-linkedin">
+                                    <i class="fa fa-linkedin"></i> Inviter avec linkedin
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-twitter">
+                                    <i class="fa fa-twitter"></i> Inviter avec twitter
+                                </a>
+                            </p>
+                            <p>
+                                <a class="btn btn-block btn-sm btn-social btn-instagram">
+                                    <i class="fa fa-instagram"></i> Inviter avec instagram
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p style="font-size:15px;">
+                                <b>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

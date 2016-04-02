@@ -1,0 +1,58 @@
+{% extends('::layout/layout_admin.html.twig') %}
+{% block body %}
+    <div class="wrapper">
+        <div class="container">
+            <div class="row">
+                {% include '::layout/navigation_profil_admin.html.twig' %}
+                <div class="span9">
+                    <div class="content">
+                        <div class="btn-controls">
+
+                            <h1>{{entity.titreProjet|upper }} 
+                                <a style="color:yellow"onclick="return false" href="{{ path('admin_projet_new') }}">
+                                    Ajouter nouveau projet&nbsp;|&nbsp;
+                                </a>
+                                <a href="{{ path('admin_projet_edit', { 'id': entity.id }) }}">
+                                    Modifier&nbsp;|&nbsp;
+                                </a>
+                                <a href="{{ path('admin_projet') }}">
+                                    Retour a la liste
+                                </a>
+                                {{ form(delete_form) }}
+                            </h1>
+                            {{form_start(edit_form) }} 
+                            <div class="row">
+                                <div class="span3">
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Titre:</label>
+                                    {{ form_widget(edit_form.titreProjet) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Etat initial du projet :</label>
+                                    {{ form_widget(edit_form.etat) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Objectif du projet :</label>
+                                    {{ form_widget(edit_form.objectifProjet) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Budget du projet :</label>
+                                    {{ form_widget(edit_form.budget) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Devise du projet :</label>
+                                    {{ form_widget(edit_form.devise) }}
+                                </div>
+                                <div class="span4">
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Description:</label>
+                                    {{ form_widget(edit_form.descriptionProjet) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Competences associé :</label>
+                                    {{ form_widget(edit_form.competence) }}
+                                    <i class="glyphicon glyphicon-plus-sign" style="color: black"></i>&nbsp;<label class="autre">Categorie du projet :</label>
+                                    {{ form_widget(edit_form.categorie) }}
+                                </div>
+                                
+                            </div>
+                            {{form_end(edit_form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+                            
+                            
+                           

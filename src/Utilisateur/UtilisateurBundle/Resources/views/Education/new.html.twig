@@ -1,0 +1,29 @@
+
+
+<div class="row" style="margin-top: 20px;">
+    <div class="col-xs-12" style="display:none" id="msgEducation"> 
+        <div class="alert alert-success alert-dismissible" role="alert" style="color:white;">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          Vos informations on ete bien ajoutés
+        </div>
+    </div>
+    <form method="POST" class="ajaxFormEducation" action="{{path('education_create')}}" {{ form_enctype(form) }}>
+        <div id="form_body">
+            {% include 'UtilisateurBundle:Education:form.html.twig' with {'form': form} %}
+        </div>
+    <div class="col-xs-6">    
+        <button type="submit" class="btn btn-primary btn-sm">Ajouter un ed</button>
+        <img src="{{ asset('img/loading.gif') }}" class="loadEducation" style="width:30px;display:none;">
+        {{form_rest(form)}}
+    </div>
+        
+    </form>
+
+</div>
+{% block javascripts %}
+<script>
+    initAjaxFormEducation();
+    
+</script>
+
+{% endblock %}

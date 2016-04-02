@@ -1,0 +1,55 @@
+listearchive:
+    path:     /listearchive
+    defaults: { _controller: "UtilisateurBundle:Message:listearchive" }
+
+
+listemessage:
+    path:     /listemessage
+    defaults: { _controller: "UtilisateurBundle:Message:listemessage" }
+
+listeenvoie:
+    path:     /listeenvoie
+    defaults: { _controller: "UtilisateurBundle:Message:listeenvoie" }
+
+message:
+    path:     /
+    defaults: { _controller: "UtilisateurBundle:Message:index" }
+
+message_show:
+    path:     /{id}/show
+    defaults: { _controller: "UtilisateurBundle:Message:show" }
+
+message_new:
+    path:     /{id}/new
+    defaults: { _controller: "UtilisateurBundle:Message:new" }
+
+message_create:
+    path:     /create
+    defaults: { _controller: "UtilisateurBundle:Message:create" }
+    requirements: { _method: post }
+
+message_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UtilisateurBundle:Message:edit" }
+
+message_update:
+    path:     /{id}/update
+    defaults: { _controller: "UtilisateurBundle:Message:update" }
+    requirements: { _method: post|put }
+
+message_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Message:delete" }
+    requirements: { _method: post|delete }
+
+msg_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UtilisateurBundle:Message:delete" }
+
+msg1_delete:
+    path:     /{id}/deleteenvoie
+    defaults: { _controller: "UtilisateurBundle:Message:deleteenvoie" }
+
+msgall_delete:
+    path:     /{id}/deletearchive
+    defaults: { _controller: "UtilisateurBundle:Message:deletearchive" }

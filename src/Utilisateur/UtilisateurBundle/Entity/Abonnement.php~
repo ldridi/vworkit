@@ -1,0 +1,76 @@
+<?php
+
+namespace Utilisateur\UtilisateurBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Abonnement
+ *
+ * @ORM\Table("Abonnement")
+ * @ORM\Entity(repositoryClass="Utilisateur\UtilisateurBundle\Repository\AbonnementRepository")
+ */
+class Abonnement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\Utilisateur", cascade={"persist"})
+     * @ORM\joinColumn(nullable=false,onDelete="CASCADE")
+     */
+    private $from;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Utilisateur\UtilisateurBundle\Entity\Utilisateur", cascade={"persist"})
+     * @ORM\joinColumn(nullable=false,onDelete="CASCADE")
+     */
+    private $to;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_ajout_abonnement", type="datetime")
+     */
+    private $dateAjoutAbonnement;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set dateAjoutAbonnement
+     *
+     * @param \DateTime $dateAjoutAbonnement
+     * @return Abonnement
+     */
+    public function setDateAjoutAbonnement($dateAjoutAbonnement)
+    {
+        $this->dateAjoutAbonnement = $dateAjoutAbonnement;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateAjoutAbonnement
+     *
+     * @return \DateTime 
+     */
+    public function getDateAjoutAbonnement()
+    {
+        return $this->dateAjoutAbonnement;
+    }
+}

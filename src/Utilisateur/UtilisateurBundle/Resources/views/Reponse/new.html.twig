@@ -1,0 +1,106 @@
+{% extends('::layout/layout.html.twig') %}
+{% block body %}
+    <div class="projet">
+        {% include '::layout/header_user.html.twig' %}
+        <div class="container" style="margin-bottom:20px;">
+            <div class="row">
+                {% include '::layout/navigation_message.html.twig' %}
+                <div class="col-md-9">
+
+                    <div class="modal-content">
+                        <div class="modal-body" style="padding-top:10px;">
+                            <b style="font-size: 20px;color:black;"><i class="glyphicon glyphicon-import" style="font-size: 20px;color: black"></i>&nbsp;Répondre</b>
+                            <div class="well well-sm" style="background:#FCFCFD;margin-top:10px;">
+                                <p>
+                                    Vos coordonnées ne seront pas visibles sur le site. Elles seront par contre transmises aux porteurs de projets qui vous sélectionneront. Cependant, si vous choisissez l'abonnement Pro Max, vos coordonnées seront visibles sur le site, et vous pourrez vous faire contacter directement par des clients. Seule  adresse email sera cachée aux personnes ne s'étant pas identifiées (pour éviter le spam).
+                                </p>
+                            </div>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <li class="list-group-item text-center">
+
+                                </li>
+                                
+
+                                    <li class="list-group-item">
+                                        {% for msgs in msg %}
+                                        <div class="row">
+                                            
+                                            <div class="col-md-1">
+                                                {% if msgs.from.image %}
+                                                    <img src="{{ asset(msgs.from.image.webPath) }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% else %}
+                                                    <img src="{{ asset('img/def.jpg') }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% endif %}
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+                                                    <b>{{msgs.from}}</b></br>
+                                                    <b>Le {{ msgs.dateajoutMessage|date('d-m-Y') }} à {{ msgs.dateajoutMessage|date('H:i:s') }}</b><br>
+
+                                                    {{msgs.texteMessage}}
+                                                </p>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <a href="{{ path('msg_delete', { 'id': msgs.id }) }}"><i class="glyphicon glyphicon-remove"></i></a>
+                                            </div>
+                                            
+                                        </div>
+                                            {% endfor %}
+                                        {% for reponse in reponses %}
+                                        <div class="row">
+                                            
+                                            <div class="col-md-1">
+                                                {% if reponse.user.image %}
+                                                    <img src="{{ asset(reponse.user.image.webPath) }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% else %}
+                                                    <img src="{{ asset('img/def.jpg') }}" width="50" height="50" class="thumbnails"style="border:2px solid #3BAFDA;">
+                                                    {% endif %}
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p>
+                                                    <b>{{reponse.user}}</b></br>
+                                                    <b>Le {{ reponse.dateajoutReponse|date('d-m-Y') }} à {{ reponse.dateajoutReponse|date('H:i:s') }}</b><br>
+
+                                                    {{reponse.texteReponse}}
+                                                </p>
+                                            </div>
+                                            
+                                            
+                                        </div> 
+                                            {% endfor %}
+                                        <div class="row">  
+                                            {{ form_start(form) }}
+                                            <div class="col-md-12">
+
+
+                                                {{(form_widget(form.texteReponse))}}</br>
+
+                                            </div>
+                                            <div class="col-md-12">
+
+
+                                                {{(form_widget(form.submit))}}
+
+                                            </div>
+                                                {{ form_end(form) }}
+                                        </div>
+
+
+                                    </li>
+
+
+                                
+
+                            </div>
+
+
+                        </div>    
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

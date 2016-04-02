@@ -1,0 +1,132 @@
+<?php
+
+namespace Vworkit\VworkitBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Media
+ *
+ * @ORM\Table("Media")
+ * @ORM\Entity(repositoryClass="Vworkit\VworkitBundle\Repository\MediaRepository")
+ */
+class Media
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="url_media", type="string", length=200, nullable=true)
+     */
+    private $urlMedia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alt_media", type="string", length=200, nullable=true)
+     */
+    private $altMedia;
+    
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set urlMedia
+     *
+     * @param string $urlMedia
+     * @return Media
+     */
+    public function setUrlMedia($urlMedia)
+    {
+        $this->urlMedia = $urlMedia;
+    
+        return $this;
+    }
+
+    /**
+     * Get urlMedia
+     *
+     * @return string 
+     */
+    public function getUrlMedia()
+    {
+        return $this->urlMedia;
+    }
+
+    /**
+     * Set altMedia
+     *
+     * @param string $altMedia
+     * @return Media
+     */
+    public function setAltMedia($altMedia)
+    {
+        $this->altMedia = $altMedia;
+    
+        return $this;
+    }
+
+    /**
+     * Get altMedia
+     *
+     * @return string 
+     */
+    public function getAltMedia()
+    {
+        return $this->altMedia;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * Set altMedia
+     *
+     * @param string $file
+     * @return Media
+     */
+    public function setfile($file)
+    {
+        $this->file = $file;
+    
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getfile()
+    {
+        return $this->file;
+    }
+}

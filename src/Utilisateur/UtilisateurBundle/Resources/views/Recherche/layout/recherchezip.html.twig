@@ -1,0 +1,14 @@
+<form action="{{ path('rechercheZip') }}" method="POST">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="form-search search-only">
+                <i class="search-icon glyphicon glyphicon-map-marker" style="color:black;" ></i>
+                {{ form(form.zip) }}
+            </div>
+        </div>
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-send"></i></button>
+        </div>
+    </div>
+    
+</form>
